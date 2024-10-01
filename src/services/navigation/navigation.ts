@@ -1,4 +1,4 @@
-import { Home, Contact, Dialogs, Forms, GetStarted, Documentation } from "@app/pages";
+import { Home, Contact, GetStarted } from "@app/pages";
 import { PageBase } from "@decorators";
 import { State } from "@services/state/state";
 
@@ -7,9 +7,6 @@ export class Navigation {
         '/': Home,
         '/home': Home,
         '/get-started': GetStarted,
-        '/forms': Forms,
-        '/dialogs': Dialogs,
-        '/docs': Documentation,
         '/contact-us': Contact,
     };
     get origin() {
