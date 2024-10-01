@@ -4,8 +4,8 @@ export const home = {
     HEADER: 'welcome',
     HERO: {
         img: '/hero.jpeg',
-        header: 'welcome to vanilla!',
-        subHeader: 'A vanilla TS non-framework that gives you a frame to work with.',
+        header: 'welcome to home page!',
+        subHeader: 'this is sub header...',
         anchor: {
             text: 'get started',
             href: 'get-started'
