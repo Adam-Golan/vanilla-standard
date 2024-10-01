@@ -1,0 +1,31 @@
+{
+  "name": "vanilla-standard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "/src/style"
+  ],
+  "scripts": {
+    "update-project": "git submodule update --recursive --remote",
+    "initiate": "git submodule update --init --recursive && npm install --recursive",
+    "postinstall": "node initiator.mjs",
+    "git_init": "git init && git add -A && git commit -m \"Init.\"",
+    "run-style": "npm run -w csser watch:scss",
+    "run-logic": "vite",
+    "dev": "concurrently \"npm run run-style\" \"npm run run-logic\"",
+    "visualize": "npx vite-bundle-visualizer",
+    "build": "npm run build-style && vite build --emptyOutDir",
+    "build-style": "npm run -w csser build:scss",
+    "build-watch": "npm run build-style && vite build --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "",
+    "typescript": "",
+    "vite": "",
+    "vite-tsconfig-paths": "",
+    "vite-bundle-visualizer":""
+  }
+}

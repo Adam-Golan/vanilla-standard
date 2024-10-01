@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "lib": ["ES2020", "DOM", "DOM.Iterable"],
+      "skipLibCheck": true,
+      "baseUrl": "./src",
+  
+      /* Bundler mode */
+      "moduleResolution": "bundler",
+      "allowImportingTsExtensions": true,
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "noEmit": true,
+  
+      /* Linting */
+      "strict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noFallthroughCasesInSwitch": true,
+      "strictPropertyInitialization": false,
+      "experimentalDecorators": true,
+      /* Paths */
+      "paths": {
+        "@decorators": ["decorators"],
+        "@decorators/*": ["decorators/*"],
+        "@services": ["services"],
+        "@services/*": ["services/*"],
+        "@i18n/*": ["i18n/*"],
+        "@app/*": ["app/*"],
+      }
+    },
+    "include": ["src", "vite.config.mts"]
+  }
+  

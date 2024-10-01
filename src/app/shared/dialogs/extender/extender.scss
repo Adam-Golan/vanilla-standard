@@ -1,0 +1,26 @@
+.extender {
+  --size: 50px;
+  overflow: visible;
+  cursor: pointer;
+  &.dots {
+    width: var(--size);
+    height: var(--size);
+    background-image: radial-gradient(var(--color) 50%, transparent 50%),
+      radial-gradient(var(--color) 50%, transparent 50%),
+      radial-gradient(var(--color) 50%, transparent 50%);
+    background-size: 10px 10px, 10px 10px, 10px 10px;
+    background-position: 25% 50%, 50% 50%, 75% 50%;
+    background-repeat: no-repeat;
+  }
+  &.caret {
+    width: var(--size);
+    height: var(--size);
+  }
+  .dropdown {
+    top: 100%;
+    width: max-content;
+    * {
+      font-size: 1.2rem;
+    }
+  }
+}

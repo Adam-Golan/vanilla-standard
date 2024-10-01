@@ -1,0 +1,34 @@
+#adder {
+    --size: 70;
+    --pos: 10%;
+    width: calc(var(--size) * 1px);
+    height: calc(var(--size) * 1px);
+    position: fixed;
+    bottom: var(--pos);
+    right: var(--pos);
+    border-radius: 50%;
+    background: var(--color);
+    box-shadow: 0 0 15px 5px var(--color);
+    cursor: pointer;
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--bg);
+    }
+
+    &::before {
+        width: 60%;
+        height: 3px;
+    }
+    &::after {
+        width: 3px;
+        height: 60%;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}

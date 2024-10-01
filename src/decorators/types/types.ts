@@ -1,0 +1,2 @@
+export type ElementType = 'page' | 'module' | 'component';
+export type LayoutType = 'single_column' | 'two_column' | 'three_column' | 'asymmetrical' | 'fullscreen' | 'F' | 'Z' | 'grid' | 'masonry' | 'magazine' | 'card' | 'hero' | 'split' | 'fixed_sidebar' | 'sticky_header';
