@@ -1,8 +1,6 @@
 import { ILink } from '@app/shared/link-based/intefaces';
 
-export interface IHeroText {
-    header: string;
-    subHeader: string;
+export interface IHeroText extends IHeaderText {
     img: string;
     anchor?: Pick<ILink, 'text' | 'href'>;
 }
