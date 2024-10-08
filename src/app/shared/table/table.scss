@@ -1,0 +1,19 @@
+.table {
+  width: max-content;
+  margin-block: 1rem;
+  display: flex;
+  flex-direction: column;
+  .row {
+    display: flex;
+    justify-content: space-between;
+    &.head {
+      text-align: center;
+      text-transform: capitalize;
+    }
+    .cell {
+      flex: 1;
+      padding: 1rem;
+      border: 1px solid;
+    }
+  }
+}
