@@ -24,6 +24,7 @@
       /* Paths */
       "paths": {
         "@decorators": ["decorators"],
+        "@constants/*": ["constants/*"],
         "@decorators/*": ["decorators/*"],
         "@services": ["services"],
         "@services/*": ["services/*"],

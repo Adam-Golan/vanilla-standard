@@ -1,13 +1,15 @@
-export class State {
+export class State<StateStructure = Record<string, any>> {
     subscribers: { [k: string]: ((...args: any[]) => void)[] } = {};
-    data: { [k: string]: any } = {};
+    data: Partial<StateStructure> = {};
 
-    setData<T = any>(name: string, value: T): void {
+    setData<K extends keyof StateStructure>(name: K, value: StateStructure[K]): void {
         this.data[name] = value;
     }
-    getData<T = any>(name: string): T {
+    
+    getData<K extends keyof StateStructure>(name: K): StateStructure[K] | undefined {
         return this.data[name];
     }
+    
     publish(name: string, ...args: any[]): void {
         this.subscribers[name].forEach(func => func(...args));
     }

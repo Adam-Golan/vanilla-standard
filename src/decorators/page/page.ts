@@ -1,10 +1,10 @@
 import { Enlist } from "@decorators/utils/listing";
 import { Base } from "@decorators/base";
 import { State } from "@services";
-import { StateKeys } from "@services/state/config";
 import { LayoutType } from "@decorators/types/types";
 import { Footer } from "@app/shared";
 import { BasePageText } from "@i18n/interfaces";
+import { StateKeys } from "@constants/stateKetys.constant";
 
 export function PageDecorator(target: CustomElementConstructor) {
     Enlist('page', target);
