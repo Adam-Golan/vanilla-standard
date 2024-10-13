@@ -1,6 +1,6 @@
-// import { NewExercise } from "@app/shared/newExercise/newExercise";
 import { ComponentBase, ComponentDecorator } from "@decorators";
 import { State } from "@services";
+// import { StateKeys } from "@constants/stateKeys.constant";
 
 import './adder.scss';
 
@@ -12,6 +12,7 @@ export class Adder extends ComponentBase<{}> {
     }
     protected init(): void {
         this.id = 'adder';
+        // Use to open modal.
         // this.onclick = () => this.appState.publish(StateKeys.openModal, new NewExercise());
     }
 }
