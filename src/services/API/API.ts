@@ -1,5 +1,5 @@
 export class API {
-    constructor(private service: string = location.origin, private headers?: HeadersInit) { }
+    constructor(private service: string = location.origin, private headers: HeadersInit = {}) { }
 
     GET<T = any>(action: string, requestHeaders?: HeadersInit) {
         return this.baseRequest<T>(action, this.createInit('GET', '', requestHeaders));
@@ -17,9 +17,9 @@ export class API {
         return this.baseRequest<T>(action, this.createInit('DELETE', payload, requestHeaders));
     }
 
-    private createInit(method: keyof API, payload: string, requestHeaders?: HeadersInit): RequestInit {
+    private createInit(method: keyof API, payload: string, requestHeaders: HeadersInit = {}): RequestInit {
         return {
-            headers: { 'Content-Type': 'application/json', ...this.headers, ...(requestHeaders ?? {}) },
+            headers: { 'Content-Type': 'application/json', ...this.headers, ...requestHeaders },
             method,
             body: method === 'GET' ? null : payload
         }
