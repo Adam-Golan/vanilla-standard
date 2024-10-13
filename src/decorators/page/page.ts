@@ -4,7 +4,7 @@ import { State } from "@services";
 import { LayoutType } from "@decorators/types/types";
 import { Footer } from "@app/shared";
 import { BasePageText } from "@i18n/interfaces";
-import { StateKeys } from "@constants/stateKetys.constant";
+import { StateKeys } from "@constants/stateKeys.constant";
 
 export function PageDecorator(target: CustomElementConstructor) {
     Enlist('page', target);

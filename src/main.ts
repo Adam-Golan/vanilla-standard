@@ -4,7 +4,7 @@ import './utils/stringExtensions';
 import { PageBase } from "@decorators";
 import { Device, Language, Navigation, State } from "@services";
 import { Loader, Modal, Navbar } from "@app/shared";
-import { StateKeys } from '@constants/stateKetys.constant';
+import { StateKeys } from '@constants/stateKeys.constant';
 import { Home, GetStarted, Contact } from '@app/pages';
 
 interface IApplicationState {

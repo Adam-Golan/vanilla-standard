@@ -2,7 +2,7 @@ import { ModuleBase } from "@decorators";
 import { State } from "@services";
 import { ILink } from "./intefaces";
 import { Link } from "./shared/link";
-import { StateKeys } from "@constants/stateKetys.constant";
+import { StateKeys } from "@constants/stateKeys.constant";
 
 export abstract class LinkBased<IText = any> extends ModuleBase<IText> {
     links: ILink[] = [];

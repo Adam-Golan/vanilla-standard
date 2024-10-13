@@ -2,7 +2,7 @@ import { LinkBased } from "../link-based";
 import { ModuleDecorator } from "@decorators";
 import { Link } from "@app/shared";
 import { MenuExtender } from "@app/shared";
-import { StateKeys } from "@constants/stateKetys.constant";
+import { StateKeys } from "@constants/stateKeys.constant";
 import './navbar.scss';
 
 @ModuleDecorator
