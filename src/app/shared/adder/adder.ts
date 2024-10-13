@@ -1,7 +1,6 @@
 // import { NewExercise } from "@app/shared/newExercise/newExercise";
 import { ComponentBase, ComponentDecorator } from "@decorators";
 import { State } from "@services";
-import { StateKeys } from "@services/state/config";
 
 import './adder.scss';
 

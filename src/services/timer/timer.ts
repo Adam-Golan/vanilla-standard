@@ -22,11 +22,7 @@ export class Timer {
 
     getElapsedTime(): ElapsedTime {
         if (!this.endTime?.valueOf()) this.stopClock();
-        const timeDiff: any = Math.round((this.endTime.getTime() - this.startTime.getTime()) / 1000);
-        const seconds = timeDiff % 60;
-        const minutes = timeDiff > 60 ? Math.floor(timeDiff / 60) : 0;
-        const hours = timeDiff > 3600 ? Math.floor(timeDiff / 3600) : 0;
-        const duration = `${this.addZero(hours)}:${this.addZero(minutes)}:${this.addZero(seconds)}`;
+        const {duration} = this.endTime.getTimeDiff(this.startTime)
         setTimeout(()=> this.reset());
         return {
             start: {
@@ -41,10 +37,6 @@ export class Timer {
             },
             duration
         }
-    }
-
-    private addZero(n: number): string {
-        return n > 9 ? '' : '0';
     }
 
     private getTime(dType: 'start' | 'end', tType: 'Hours' | 'Minutes' | 'Seconds'): number {

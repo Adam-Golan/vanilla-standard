@@ -1,25 +1,25 @@
 export class API {
-    constructor(private service: string = location.origin) { }
+    constructor(private service: string = location.origin, private headers?: HeadersInit) { }
 
-    GET<T = any>(action: string) {
-        return this.baseRequest<T>(action, this.createInit('GET', ''));
+    GET<T = any>(action: string, requestHeaders?: HeadersInit) {
+        return this.baseRequest<T>(action, this.createInit('GET', '', requestHeaders));
     }
-    POST<T = any>(action: string, payload: string) {
-        return this.baseRequest<T>(action, this.createInit('POST', payload));
+    POST<T = any>(action: string, payload: string, requestHeaders?: HeadersInit) {
+        return this.baseRequest<T>(action, this.createInit('POST', payload, requestHeaders));
     }
-    PUT<T = any>(action: string, payload: string) {
-        return this.baseRequest<T>(action, this.createInit('PUT', payload));
+    PUT<T = any>(action: string, payload: string, requestHeaders?: HeadersInit) {
+        return this.baseRequest<T>(action, this.createInit('PUT', payload, requestHeaders));
     }
-    PATCH<T = any>(action: string, payload: string) {
-        return this.baseRequest<T>(action, this.createInit('PATCH', payload));
+    PATCH<T = any>(action: string, payload: string, requestHeaders?: HeadersInit) {
+        return this.baseRequest<T>(action, this.createInit('PATCH', payload, requestHeaders));
     }
-    DELETE<T = any>(action: string, payload: string) {
-        return this.baseRequest<T>(action, this.createInit('DELETE', payload));
+    DELETE<T = any>(action: string, payload: string, requestHeaders?: HeadersInit) {
+        return this.baseRequest<T>(action, this.createInit('DELETE', payload, requestHeaders));
     }
 
-    private createInit(method: keyof API, payload: string): RequestInit {
+    private createInit(method: keyof API, payload: string, requestHeaders?: HeadersInit): RequestInit {
         return {
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', ...this.headers, ...(requestHeaders ?? {}) },
             method,
             body: method === 'GET' ? null : payload
         }

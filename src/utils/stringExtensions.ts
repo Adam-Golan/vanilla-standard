@@ -1,7 +1,16 @@
 String.prototype.capitalize = function (): string {
-    let finStr = this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
-    const spaces = [];
-    for (let idx = 0; idx < finStr.length; idx++) if (finStr[idx] === ' ') spaces.push(idx + 1);
-    for (const idx of spaces) finStr = finStr.slice(0, idx) + finStr.charAt(idx).toUpperCase() + finStr.slice(idx + 1);
-    return finStr;
+     // Convert the string to an array of characters for efficient manipulation
+     const chars = this.toLowerCase().split('');
+     // Capitalize the first character
+     chars[0] = chars[0].toUpperCase();
+ 
+     // Iterate through the characters and capitalize after each space
+     for (let i = 1; i < chars.length; i++) {
+         if (chars[i - 1] === ' ') {
+             chars[i] = chars[i].toUpperCase();
+         }
+     }
+ 
+     // Join the characters back into a string
+     return chars.join('');
 };

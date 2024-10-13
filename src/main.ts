@@ -3,16 +3,29 @@ import './utils/stringExtensions';
 
 import { PageBase } from "@decorators";
 import { Device, Language, Navigation, State } from "@services";
-import { StateKeys } from "@services/state/config";
 import { Loader, Modal, Navbar } from "@app/shared";
+import { StateKeys } from '@constants/stateKetys.constant';
+import { Home, GetStarted, Contact } from '@app/pages';
+
+interface IApplicationState {
+  [StateKeys.lang]: Language;
+  [StateKeys.nav]: Navigation;
+  [StateKeys.device]: Device;
+}
 
 class Main {
   // App element.
   app = document.getElementById('app') ?? this.createApp();
   // Services.
   device = new Device();
-  navigator = new Navigation();
-  appState = new State();
+  navigator = new Navigation({
+    '/': Home,
+    '/home': Home,
+    '/get-started': GetStarted,
+    '/contact-us': Contact,
+
+  });
+  appState = new State<IApplicationState>();
   i18n = new Language();
 
   // Elements.
