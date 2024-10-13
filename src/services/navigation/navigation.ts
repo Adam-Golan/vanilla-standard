@@ -2,10 +2,7 @@ import { PageBase } from "@decorators";
 import { State } from "@services/state/state";
 
 export class Navigation {
-    pages: { [k: string]: typeof PageBase<any> } = {};
-
-    constructor(pages: {[k: string]: typeof PageBase<any>}){
-        this.pages = pages;
+    constructor(private pages: {[k: string]: typeof PageBase<any>} = {}){
     }
 
     get origin() {
