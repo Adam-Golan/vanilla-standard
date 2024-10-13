@@ -1,7 +1,7 @@
 export class API {
     constructor(private service: string = location.origin, private headers: HeadersInit = {}) { }
 
-    GET<T = any>(action: string, requestHeaders?: HeadersInit) {
+    GET<T = any>(action: string, _: string, requestHeaders?: HeadersInit) {
         return this.baseRequest<T>(action, this.createInit('GET', '', requestHeaders));
     }
     POST<T = any>(action: string, payload: string, requestHeaders?: HeadersInit) {
