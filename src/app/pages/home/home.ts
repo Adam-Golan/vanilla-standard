@@ -1,16 +1,13 @@
-import { PageBase, PageDecorator } from "@decorators";
+import { Page, PageDecorator } from "@decorators";
 import { texts } from "@i18n/en/lang";
 import { Hero } from "@app/shared";
 
 import './home.scss';
 
 @PageDecorator
-export class Home extends PageBase<typeof texts.home> {
-    hero: Hero;
+export class Home extends Page<typeof texts.home> {
     protected async init() {
-        this.subPageList = ['hero'];
-        this.hero = new Hero(this.pageState);
-        this.append(this.hero);
+        this.append(new Hero(this.texts.HERO, this.pageState));
         super.init();
         this.showPage();
     }

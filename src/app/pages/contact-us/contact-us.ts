@@ -1,14 +1,11 @@
-import { PageBase, PageDecorator } from "@decorators";
+import { Page, PageDecorator } from "@decorators";
 import { texts } from "@i18n/en/lang";
 import { Hero } from "@app/shared";
 
 @PageDecorator
-export class Contact extends PageBase<typeof texts.contact> {
-    hero: Hero;
+export class Contact extends Page<typeof texts.contact> {
     protected async init() {
-        this.subPageList = ['hero'];
-        this.hero = new Hero(this.pageState);
-        this.append(this.hero);
+        this.append(new Hero(this.texts.HERO, this.pageState));
         super.init();
         this.showPage();
     }

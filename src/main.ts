@@ -4,7 +4,7 @@ import './utils/stringExtensions';
 import { Device, Language, Navigation, State } from "@services";
 import { Modal, Navbar } from "@app/shared";
 import { StateKeys } from '@constants/stateKeys.constant';
-import { Home, GetStarted, Contact, Forms, Documentation, Dialogs } from '@app/pages';
+import { Home, GetStarted, Contact } from '@app/pages';
 
 interface IApplicationState {
   [StateKeys.lang]: Language;
@@ -29,9 +29,6 @@ class Main {
       '/': Home,
       '/home': Home,
       '/get-started': GetStarted,
-      '/forms': Forms,
-      '/docs': Documentation,
-      '/dialogs': Dialogs,
       '/contact-us': Contact,
     });
     this.setData();
