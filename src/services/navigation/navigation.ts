@@ -1,32 +1,51 @@
-import { PageBase } from "@decorators";
+import { Loader } from "@app/shared";
+import { StateKeys } from "@constants/stateKeys.constant";
+import { Page } from "@decorators";
 import { State } from "@services/state/state";
 
+export interface IPages {
+    [k: string]: typeof Page<any> | IPages;
+}
+
 export class Navigation {
-    constructor(private pages: {[k: string]: typeof PageBase<any>} = {}){
+    loader = new Loader();
+    loadingPage: Page<any>;
+
+    constructor(private state: State, private ref: HTMLElement, public pages: IPages, private basePath = '') {
+        window.addEventListener("popstate", _ => {
+            const crumbs = Navigation.breadCrumbs();
+            if (crumbs[crumbs.length - 2] === this.basePath) this.loading(location.pathname);
+        });
     }
 
-    get origin() {
-        return location.origin;
-    }
-    get href() {
-        return `${this.origin}/`;
-    }
-    get pathname() {
-        return location.pathname;
-    }
-    get port() {
-        return location.port;
-    }
-    get protocol() {
-        return location.protocol;
+    fisrtLoad(path: string): void {
+        this.ref.append(this.loader);
+        this.prepareNav(path);
     }
 
-    getPage<T extends PageBase>(): new (appState: State) => T {
-        document.title = `Vanilla | ${this.pathname === '/' ? 'Home' : this.pathname.replace(/(\/|\-)/g, ' ').trim().capitalize()}`;
-        return (this.pages[this.pathname.toLocaleLowerCase()] ?? this.pages['/']) as new (appState: State) => T;
+    loading(path: string): void {
+        this.ref.replaceChild(this.loader, this.loadingPage);
+        this.prepareNav(path);
     }
 
-    getClickedPage(page: string): void {
-        window.history.pushState(null, '', page);
+    showPage(): void {
+        this.ref.replaceChild(this.loadingPage, this.loader);
+    }
+
+    private prepareNav(path: string): void {
+        window.history.pushState(null, '', `${location.origin}${this.basePath}${path}`);
+        const Page = this.getPage(path);
+        const texts = this.state.getData(StateKeys.lang).getPageTexts(Page.name.toLowerCase());
+        this.loadingPage = new Page(texts, this.state);
+    }
+
+    private getPage<T extends Page>(path: string): new (texts: Record<string, string>, appState: State) => T {
+        const Page = this.pages[path] ?? this.pages['/'] ?? this.pages['/home'] ?? this.pages['/landing'];
+        document.title = `Vanilla | ${(Page.name as string).addSpaces('uppercase')}`;
+        return Page as new (texts: Record<string, string>, appState: State) => T;
+    }
+
+    static breadCrumbs(): string[] {
+        return location.pathname.split('/');
     }
 }
