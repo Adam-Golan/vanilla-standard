@@ -1,6 +1,7 @@
 declare global {
     interface String {
         capitalize(): string;
+        addSpaces(type: 'uppercase' | '-' | '_' | '/'): string;
     }
 
     interface Date {

@@ -1,14 +1,29 @@
 String.prototype.capitalize = function (): string {
-    // Convert the string to an array of characters for efficient manipulation
-    const chars = this.toLowerCase().trim().split('');
-    // Capitalize the first character
-    chars[0] = chars[0].toUpperCase();
+    let result = '';
+    let capitalize = true;
+    for (let i = 0; i < this.length; i++) {
+        const char = this[i];
+        if (char === ' ') {
+            capitalize = true;
+            result += char;
+        } else if (capitalize) {
+            result += char.toUpperCase();
+            capitalize = false;
+        } else result += char.toLowerCase();
+    }
+    return result;
+};
 
-    // Iterate through the characters and capitalize after each space
-    if (chars.includes(' '))
-        for (const [i, _] of chars.entries())
-            if (chars[i - 1] === ' ') chars[i] = chars[i].toUpperCase();
-
-    // Join the characters back into a string
-    return chars.join('');
+String.prototype.addSpaces = function (type: 'uppercase' | '-' | '_' | '/'): string {
+    // Fast path for empty strings
+    if (!this.length) return '';
+    // Separator case
+    if (type !== 'uppercase') return this.split(type).join(' ');
+    // Uppercase...case
+    let result = this[0];
+    for (let i = 1; i < this.length; i++) {
+        const char = this[i];
+        result += (char >= 'A' && char <= 'Z') ? ` ${char}` : char;
+    }
+    return result;
 };
