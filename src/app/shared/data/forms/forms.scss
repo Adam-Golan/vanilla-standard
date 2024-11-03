@@ -1,0 +1,91 @@
+form-module {
+  padding: 20px;
+  legend {
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bolder;
+    text-decoration: underline;
+    text-transform: capitalize;
+  }
+  .form {
+    &-group {
+      display: inline-flex;
+      flex-direction: column;
+      overflow: visible;
+    }
+    &-input {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 10px 2px;
+      margin-block: 1rem;
+      overflow: visible;
+      &::after {
+        content: attr(data-unit);
+      }
+      &[data-required="true"]::before {
+        content: "*";
+      }
+    }
+    &-label {
+      flex-basis: max-content;
+      text-transform: capitalize;
+      &::after {
+        content: ":";
+      }
+    }
+    &-field {
+      --borderColor: var(--color);
+      width: 100%;
+      resize: none;
+    }
+    &-output {
+      flex-basis: 100%;
+      color: var(--danger-l-2);
+      max-height: 0;
+      transition: all 0.5s ease-in-out;
+      &.show {
+        max-height: 3ch;
+      }
+    }
+    &-btns {
+      padding-block: 1rem;
+      display: flex;
+      justify-content: space-evenly;
+      button {
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-transform: capitalize;
+        font-weight: bolder;
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+        &:hover {
+          scale: 1.1;
+        }
+        &:disabled {
+          background: var(--disabled-l-1);
+          cursor: no-drop;
+        }
+      }
+    }
+    &-reset:not(:disabled) {
+      background: var(--warning-l-3);
+      &:hover {
+        background: var(--warning-l-1);
+      }
+    }
+    &-add:not(:disabled) {
+      background: var(--success-l-4);
+      &:hover {
+        background: var(--success-l-1);
+      }
+    }
+  }
+  textarea {
+    height: 10ch;
+    flex-basis: 20ch;
+    overflow-y: auto;
+  }
+  autocomplete-component {
+    z-index: 9999;
+  }
+}
