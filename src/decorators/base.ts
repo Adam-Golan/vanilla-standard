@@ -1,10 +1,4 @@
-export abstract class Base<IText> extends HTMLElement {
-    texts: IText;
-    constructor() {
-        super();
-        // Throwing init method onto the queue stack, making sure everything is loaded properly.
-        setTimeout(this.init.bind(this));
-    }
+abstract class Basis extends HTMLElement {
 
     protected abstract init(): void;
 
@@ -14,30 +8,38 @@ export abstract class Base<IText> extends HTMLElement {
     }
 
     // Get element -> Id.
-    protected giElem(id: string): HTMLElement | null {
-        return document.getElementById(id);
+    protected idElem(id: string): HTMLElement | null {
+        return this.querySelector(`#${id}`);
     }
 
     // Get element -> Name.
-    protected gnElem(name: string): NodeListOf<HTMLElement> {
-        return document.getElementsByName(name);
+    protected nmElem(name: string): NodeListOf<HTMLElement> {
+        return this.querySelectorAll(`[name="${name}"]`);
     }
 
     // Get element -> Local Class.
-    protected gcElem(className: string): HTMLCollectionOf<Element> {
+    protected clsElem(className: string): HTMLCollectionOf<Element> {
         return this.getElementsByClassName(className);
     }
 
     // Get element -> Local Tag.
-    protected gtElem<K extends keyof HTMLElementTagNameMap>(tag: K): HTMLCollectionOf<HTMLElementTagNameMap[K]> {
+    protected tagElem<K extends keyof HTMLElementTagNameMap>(tag: K): HTMLCollectionOf<HTMLElementTagNameMap[K]> {
         return this.getElementsByTagName(tag);
     }
 }
 
-export abstract class SubPageBase<IText> extends Base<IText> {
-    constructor() {
+// Text oriented blocks.
+export abstract class TextBase<IText> extends Basis {
+    constructor(protected texts: IText) {
         super();
-        // Create class for modules and components by constructor name.
-        this.classList.add(this.constructor.name.toLowerCase());
+        this.init();
+    }
+}
+
+// Data oriented blocks.
+export abstract class DataSubPage<Idata> extends Basis {
+    constructor(protected data: Idata) {
+        super();
+        setTimeout(this.init.bind(this));
     }
 }
