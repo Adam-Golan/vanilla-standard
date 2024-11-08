@@ -6,7 +6,7 @@ import { ITextareaProps } from "../../interfaces/props";
 export class Textarea extends FormKeyboardComponent<ITextareaProps> {
     declare field: HTMLTextAreaElement;
 
-    protected createMe() {
+    protected createMe(): HTMLFieldSetElement {
         return this.createFormGroup('textarea');
     }
 }

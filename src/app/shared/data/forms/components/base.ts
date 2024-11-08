@@ -20,38 +20,38 @@ export abstract class FormComponent<P extends Props = Props> extends ComponentDa
     // Form Group Methods.
     // ---------------------------------------------------------------------------------------------
     // // Local creator.
-    protected abstract createMe(): HTMLParagraphElement;
+    protected abstract createMe(): HTMLFieldSetElement;
 
     // // Generic creator -> paragraph(container), label, and field.
-    protected createFormGroup(inpType: InputType): HTMLParagraphElement {
-        const [para, label] = this.createBasicElements(inpType);
+    protected createFormGroup(inpType: InputType): HTMLFieldSetElement {
+        const [fieldset, label] = this.createBasicElements(inpType);
         // Classes implement.
-        para.className = label.className = this.field.className = 'form-';
-        para.className += 'input';
+        fieldset.className = label.className = this.field.className = 'form-';
+        fieldset.className += 'input';
         label.className += 'label';
         this.field.className += 'field';
         const children: HTMLElement[] = [this.field];
         // Setting field.
         this.setField();
         // Setting paragraph.
-        this.setParaProps(para);
+        this.setFieldsetProps(fieldset);
         // Setting label if necessary.
         if (this.props.label?.length) this.setLabel(label) && children.unshift(label);
         // Setting accessibility.
         this.setAccessibility(children);
-        para.append(...children);
+        fieldset.append(...children);
         // Setting error if necessary.
-        if (this.props.error?.length) para.append(this.createError());
-        return para;
+        if (this.props.error?.length) fieldset.append(this.createError());
+        return fieldset;
     }
     // ---------------------------------------------------------------------------------------------
 
     // Elements Methods.
     // ---------------------------------------------------------------------------------------------
     // // Creates container and label.
-    protected createBasicElements(inpType: InputType): [HTMLParagraphElement, HTMLLabelElement] {
+    protected createBasicElements(inpType: InputType): [HTMLFieldSetElement, HTMLLabelElement] {
         this.field = this.cElem(inpType);
-        return [this.cElem('p'), this.cElem('label')];
+        return [this.cElem('fieldset'), this.cElem('label')];
     }
     // // Field.
     private setField() {
@@ -63,7 +63,7 @@ export abstract class FormComponent<P extends Props = Props> extends ComponentDa
     }
 
     // // Paragraph.
-    private setParaProps(para: HTMLParagraphElement): void {
+    private setFieldsetProps(para: HTMLFieldSetElement): void {
         if (this.props.dataset) Object.entries(this.props.dataset).forEach(([key, value]) => para.dataset[key] = value);
         if (typeof this.props.required === 'boolean') para.dataset.required = `${this.props.required}`;
     }

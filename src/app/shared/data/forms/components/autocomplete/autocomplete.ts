@@ -9,17 +9,17 @@ export class Autocomplete extends FormKeyboardComponent<IAutocompleteProps> {
     declare field: HTMLInputElement;
     private dropdown: FilterDropdown;
 
-    protected createMe(): HTMLParagraphElement {
-        const para = this.createFormGroup('input');
+    protected createMe(): HTMLFieldSetElement {
+        const fieldset = this.createFormGroup('input');
         // Implement Input.
         this.field.type = this.props.type ?? 'text';
         if (this.props.pattern) this.field.pattern = this.props.pattern;
         if (this.props.value) this.field.value = this.props.value;
         this.dropdown = new FilterDropdown(this.props.options, this.select.bind(this));
-        para.append(this.dropdown);
+        fieldset.append(this.dropdown);
         this.field.onfocus = () => this.dropdown.open();
         this.field.onblur = () => setTimeout(() => this.dropdown.close(), 250);
-        return para;
+        return fieldset;
     }
 
     private select({ text }: IOptionProps): void {

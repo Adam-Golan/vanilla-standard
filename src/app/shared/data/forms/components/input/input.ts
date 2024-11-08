@@ -5,14 +5,14 @@ import { IInputProps } from "../../interfaces/props";
 @ComponentDecorator
 export class Input extends FormKeyboardComponent<IInputProps> {
     declare field: HTMLInputElement;
-    protected createMe() {
-        const para = this.createFormGroup('input');
+    protected createMe(): HTMLFieldSetElement {
+        const fieldset = this.createFormGroup('input');
         // Implement Input.
         this.field.type = this.props.type ?? 'text';
         if (this.props.pattern) this.field.pattern = this.props.pattern;
         if (this.props.value) this.field.value = this.props.value;
         this.field.oninput = () => this.onInput(this.field.value = this.checkZero(this.field.value.toLowerCase()));
-        return para;
+        return fieldset;
     }
 
     private checkZero(val: string): string {

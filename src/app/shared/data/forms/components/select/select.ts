@@ -6,8 +6,8 @@ import { ISelectProps } from "../../interfaces/props";
 export class Select extends FormMouseComponent<ISelectProps> {
     declare field: HTMLSelectElement;
 
-    protected createMe() {
-        const para = this.createFormGroup('select');
+    protected createMe(): HTMLFieldSetElement {
+        const fieldset = this.createFormGroup('select');
         // Implement Select.
         if (typeof this.props.required === 'boolean') this.field.required = this.props.required;
         if (this.props.placeholder?.length) this.field.innerHTML = `<option disabled selected>${this.props.placeholder}</option>`;
@@ -18,7 +18,7 @@ export class Select extends FormMouseComponent<ISelectProps> {
             return option;
         }));
         if (!this.props.placeholder?.length) setTimeout(() => this.field.dispatchEvent(new Event('input', { bubbles: true })));
-        return para;
+        return fieldset;
     }
 
     reset(): void {
