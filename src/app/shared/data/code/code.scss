@@ -1,0 +1,35 @@
+codechunk-component.codechunk {
+    padding: 1rem;
+    border: 1px solid;
+    border-radius: 10px;
+    .head {
+        padding: .5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--trans-color-high);
+        text-transform: capitalize;
+        font-size: 1.2rem;
+        span {
+            height: 2rem;
+            display: inline-block;
+            aspect-ratio: 1;
+            cursor: pointer;
+            overflow: visible;
+            background: url("/copy.svg") no-repeat 50% / contain;
+        }
+    }
+    .content {
+        display: block;
+        border: none;
+        padding: 1rem;
+    }
+}
+
+codeword-component.codeword {
+    width: fit-content;
+    samp {
+        cursor: pointer;
+        user-select: none;
+    }
+}
