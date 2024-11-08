@@ -1,0 +1,27 @@
+progress-component.progress {
+  display: flex;
+  progress {
+    --radius: 10px;
+    margin: auto;
+    width: clamp(200px, 50%, 100%);
+    height: calc(var(--radius) * 2);
+    appearance: none;
+    border-radius: var(--radius);
+    background: var(--color);
+    border: 2px solid var(--colorShadow);
+    &::-webkit-progress-bar {
+      border-radius: var(--radius);
+      background: var(--color);
+    }
+
+    &::-webkit-progress-value {
+      border-radius: var(--radius);
+      background: var(--matrix-l-1);
+    }
+
+    &::-moz-progress-bar {
+      border-radius: var(--radius);
+      background: var(--matrix-l-1);
+    }
+  }
+}
