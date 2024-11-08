@@ -1,6 +1,6 @@
 import { ModuleData, ModuleDecorator } from "@decorators";
 import { IFormMap, IFormBtns } from "./interfaces/maps";
-import { Autocomplete, Input, Select, Textarea } from "./components";
+import { Autocomplete, Input, Select, Textarea, Checkbox, Radio, Range, Switch } from "./components";
 import { API } from "@services/API/API";
 import { FormComponent } from "./components/base";
 import { FormFieldType } from "./interfaces";
@@ -59,6 +59,44 @@ export class Form extends ModuleData {
                 case 'autocomplete':
                     field = new Autocomplete(obj.props);
                     break;
+                case "checkbox":
+                    field = new Checkbox(obj.props);
+                    break;
+                case "range":
+                    field = new Range(obj.props);
+                    break;
+                case "radio":
+                    field = new Radio(obj.props);
+                    break;
+                case "switch":
+                    field = new Switch(obj.props);
+                    break;
+                // TODO
+                // URL
+                // Telephone
+                // Hidden (not visible, holds values for submission)
+                // Color picker
+                // Date and time (combined)
+                // Multi-select dropdown
+                // Switch/toggle
+                // Listbox (multi-select list)
+                // File upload
+                // Date and time picker (calendar-based)
+                // Captcha
+                // Rating (stars or other symbols)
+                // Tag input (adding/removing multiple items)
+                // Currency input (often with symbol display)
+                // Slider (custom range with handles)
+                // Stepper (increment/decrement control)
+                // File drag and drop zone
+                // Masked input (for formatted data, e.g., phone numbers)
+                // Rich text editor
+                // Signature field
+                // QR code scanner (input by scanning)
+                // Geolocation (with map or coordinates)
+                // CSRF token (for security)
+                // User ID/session data
+                // Tracking data or analytics
             }
             field.formCb = () => {
                 this.query[obj.props.name] = `${field.value} ${obj.props.dataset?.unit ?? ''}`.trim();
@@ -70,6 +108,9 @@ export class Form extends ModuleData {
 
     // Buttons creator.
     private createBtns(): HTMLDivElement {
+        // TODO
+        // Icon button (button with only an icon)
+        // Image button (custom image as button)
         const wrapper = this.cElem('div');
         const baseCls = 'form-';
         wrapper.className = `${baseCls}btns`;

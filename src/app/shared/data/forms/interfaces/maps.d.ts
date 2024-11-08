@@ -1,9 +1,9 @@
-import { IInputElement, ITextareaElement, ISelectElement, IAutocompleteElement } from "./props";
+import { IInputElement, ITextareaElement, ISelectElement, IAutocompleteElement, ICheckboxElement, IRangeElement, IRadioElement, ISwitchElement } from "./props";
 
 export interface IFormMap {
     legend?: string;
     fields: {
-        [name: string]: IInputElement | ITextareaElement | ISelectElement | IAutocompleteElement;
+        [name: string]: IInputElement | ITextareaElement | ISelectElement | IAutocompleteElement | ICheckboxElement | IRangeElement | IRadioElement | ISwitchElement;
     }
 }
 
