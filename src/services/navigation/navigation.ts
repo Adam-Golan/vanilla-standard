@@ -24,6 +24,7 @@ export class Navigation {
     }
 
     loading(path: string): void {
+        if (location.pathname.includes(path)) return;
         this.ref.replaceChild(this.loader, this.loadingPage);
         this.prepareNav(path);
     }

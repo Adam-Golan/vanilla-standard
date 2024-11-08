@@ -54,7 +54,6 @@ class Main {
   }
 
   private navigation(page: string): void {
-    if (location.pathname.includes(page)) return;
     this.navigator.loading(page);
   }
 
