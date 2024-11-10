@@ -1,10 +1,9 @@
 import './style/dist/style.css';
 import './utils/stringExtensions';
 
-import { Device, Language, Navigation, State } from "@services";
+import { Device, Language, Navigation, State, siteRoutes } from "@services";
 import { Modal, Navbar } from "@app/shared";
 import { StateKeys } from '@constants/stateKeys.constant';
-import { Home, GetStarted, Contact } from '@app/pages';
 
 interface IApplicationState {
   [StateKeys.lang]: Language;
@@ -25,12 +24,7 @@ class Main {
     this.device = new Device();
     this.appState = new State();
     this.i18n = new Language();
-    this.navigator = new Navigation(this.appState, this.app, {
-      '/': Home,
-      '/home': Home,
-      '/get-started': GetStarted,
-      '/contact-us': Contact,
-    });
+    this.navigator = new Navigation(this.appState, this.app, siteRoutes);
     this.setData();
     this.init();
   }

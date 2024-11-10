@@ -10,3 +10,9 @@ Vanilla Standard offers a more feature-rich starting point without adding unnece
 - **Pages**: Comes with **Home**, **Contact Us**, and **About** pages pre-configured.
 
 A solid choice for mid-sized projects or those needing more out-of-the-box functionality.
+
+## !!!ATTENTION!!!
+Sitemap script requires the following libraries to be global on your machine:
+- url
+- path
+- fs
