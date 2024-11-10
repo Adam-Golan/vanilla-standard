@@ -4,7 +4,7 @@
 import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
 import { writeFileSync, existsSync, mkdirSync } from 'fs';
-import { siteRoutes } from './routes';
+import { appConfig } from 'app.config';
 
 interface SiteMapRoute {
     path: string;
@@ -18,7 +18,7 @@ function generateSitemap(): string {
     const baseUrl = "https://your-site.com"; // Replace with your site's actual URL
     const xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
     const xmlFooter = "</urlset>";
-    const mapRoutes: SiteMapRoute[] = Object.keys(siteRoutes).map((path): SiteMapRoute => ({ path }));
+    const mapRoutes: SiteMapRoute[] = Object.keys(appConfig.routes).map((path): SiteMapRoute => ({ path }));
     const xmlBody = mapRoutes
         .map(route => {
             const url = `<loc>${baseUrl}${route.path}</loc>`;

@@ -5,4 +5,4 @@ export * from './navigation/navigation';
 export * from './state/state';
 export * from './storage/storage';
 export * from './timer/timer';
-export * from './sitemap/routes';
+export * from './meta/meta';

@@ -1,9 +1,10 @@
 import './style/dist/style.css';
 import './utils/stringExtensions';
 
-import { Device, Language, Navigation, State, siteRoutes } from "@services";
+import { Device, Language, Navigation, setMetaTags, State } from "@services";
 import { Modal, Navbar } from "@app/shared";
 import { StateKeys } from '@constants/stateKeys.constant';
+import { appConfig } from 'app.config';
 
 interface IApplicationState {
   [StateKeys.lang]: Language;
@@ -21,10 +22,11 @@ class Main {
 
   // Elements.
   constructor() {
+    setMetaTags(appConfig.meta);
     this.device = new Device();
     this.appState = new State();
     this.i18n = new Language();
-    this.navigator = new Navigation(this.appState, this.app, siteRoutes);
+    this.navigator = new Navigation(this.appState, this.app, appConfig.routes);
     this.setData();
     this.init();
   }
