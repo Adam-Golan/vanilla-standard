@@ -1,5 +1,5 @@
 import { GetStarted, Home, Contact, Dialogs, Documentation, Forms } from "@app/pages"
-import { IPages, IMetaTags } from "@services"
+import { IPages, IMetaTags, OGCard } from "@services"
 
 export const appConfig: AppConfig = {
     routes: {
@@ -20,5 +20,6 @@ export const appConfig: AppConfig = {
 
 interface AppConfig {
     routes: IPages,
-    meta: IMetaTags
+    meta: IMetaTags,
+    OGCard?: OGCard
 }
