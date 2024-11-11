@@ -18,8 +18,8 @@ abstract class Basis extends HTMLElement {
     }
 
     // Get element -> Local Class.
-    protected clsElem(className: string): HTMLCollectionOf<Element> {
-        return this.getElementsByClassName(className);
+    protected clsElem(className: string): NodeListOf<HTMLElement> {
+        return this.querySelectorAll(`.${className}`);
     }
 
     // Get element -> Local Tag.
