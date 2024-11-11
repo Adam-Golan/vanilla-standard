@@ -1,7 +1,7 @@
 import './style/dist/style.css';
 import './utils/stringExtensions';
 
-import { Device, Language, Navigation, setMetaTags, State } from "@services";
+import { Device, Language, Navigation, setMetaTags, State, setOpenGraphTags } from "@services";
 import { Modal, Navbar } from "@app/shared";
 import { StateKeys } from '@constants/stateKeys.constant';
 import { appConfig } from 'app.config';
@@ -23,6 +23,7 @@ class Main {
   // Elements.
   constructor() {
     setMetaTags(appConfig.meta);
+    if (appConfig.OGCard) setOpenGraphTags(appConfig.OGCard);
     this.device = new Device();
     this.appState = new State();
     this.i18n = new Language();
