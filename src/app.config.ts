@@ -2,6 +2,7 @@ import { GetStarted, Home, Contact, Dialogs, Documentation, Forms } from "@app/p
 import { IPages, IMetaTags, OGCard } from "@services"
 
 export const appConfig: AppConfig = {
+    siteURL: 'https://your-site.com', // Replace with your site's actual URL
     routes: {
         '/': Home,
         '/home': Home,
@@ -19,6 +20,7 @@ export const appConfig: AppConfig = {
 }
 
 interface AppConfig {
+    siteURL: string;
     routes: IPages,
     meta: IMetaTags,
     OGCard?: OGCard

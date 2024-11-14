@@ -15,7 +15,7 @@ interface SiteMapRoute {
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function generateSitemap(): string {
-    const baseUrl = "https://your-site.com"; // Replace with your site's actual URL
+    const baseUrl = appConfig.siteURL;
     const xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
     const xmlFooter = "</urlset>";
     const mapRoutes: SiteMapRoute[] = Object.keys(appConfig.routes).map((path): SiteMapRoute => ({ path }));
