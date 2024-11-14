@@ -1,0 +1,31 @@
+toast-component.toast {
+  --color: var(--disabled-l-5);
+  --pad: 15px;
+  padding: var(--pad) calc(var(--pad) * 2);
+  width: fit-content;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  border-radius: 10px;
+  background: var(--bg);
+  backdrop-filter: opacity(20%) blur(10px);
+  transition: all 0.3s ease;
+  &.show {
+    bottom: var(--pad);
+  }
+  &.success {
+    --bg: var(--success-d-1);
+  }
+  &.error {
+    --bg: var(--danger-d-1);
+  }
+  &.info {
+    --bg: var(--info-d-4);
+  }
+  &.warn {
+    --bg: var(--warning-d-3);
+  }
+  &.general {
+    --bg: var(--color);
+  }
+}
