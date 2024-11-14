@@ -1,0 +1,14 @@
+rating-component.rating {
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: center;
+  .star {
+    width: 30px;
+    aspect-ratio: 1;
+    background: var(--disabled);
+    clip-path: polygon(50% 0, 79% 90%, 2% 35%, 98% 35%, 21% 90%);
+    &.filled {
+      background: var(--ring);
+    }
+  }
+}
