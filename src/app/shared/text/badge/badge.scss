@@ -1,0 +1,54 @@
+badge-component.badge {
+  --pad: 5px;
+  --color: var(--disabled-l-5);
+  --pos: calc((var(--pad) * 2 + 0.8rem) * -1);
+  padding: var(--pad) calc(var(--pad) * 2);
+  width: fit-content;
+  position: absolute;
+  border-radius: var(--pad);
+  background: var(--bg);
+  color: var(--bg);
+  font-size: 0.8rem;
+  font-weight: bolder;
+  letter-spacing: calc(var(--pad) * 0.4);
+
+  &.top {
+    top: var(--pos);
+  }
+  &.bottom {
+    bottom: var(--pos);
+  }
+  &.left {
+    left: var(--pos);
+    rotate: -90deg;
+    &.top {
+      rotate: -45deg;
+    }
+    &.bottom {
+      rotate: 45deg;
+    }
+  }
+  &.right {
+    right: var(--pos);
+    rotate: 90deg;
+    &.top {
+      rotate: 45deg;
+    }
+    &.bottom {
+      rotate: -45deg;
+    }
+  }
+
+  &.success {
+    --bg: var(--success-d-3);
+  }
+  &.info {
+    --bg: var(--info-d-5);
+  }
+  &.warn {
+    --bg: var(--warning-d-4);
+  }
+  &.danger {
+    --bg: var(--danger-d-3);
+  }
+}
