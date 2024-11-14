@@ -1,0 +1,31 @@
+collapsible-component.collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  &.extand {
+    grid-template-rows: 1fr;
+    .collapsible-content {
+      visibility: visible;
+    }
+    .collapsible-icon {
+      rotate: 180deg;
+    }
+  }
+
+  .collapsible-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .collapsible-content {
+    min-height: 0;
+    transition: all 0.5s ease;
+    visibility: hidden;
+  }
+
+  .collapsible-icon {
+    transition: all 0.5s ease;
+  }
+}
