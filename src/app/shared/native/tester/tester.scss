@@ -1,0 +1,18 @@
+tester-component.tester {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    &::before, &::after {
+        content: '!!!tester!!!';
+        position: absolute;
+    }
+    &::before {
+        top: 0;
+        left: 0;
+    }
+    &::after {
+        bottom: 0;
+        right: 0;
+    }
+}
