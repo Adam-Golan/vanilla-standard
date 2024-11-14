@@ -1,0 +1,59 @@
+// Tooltip as Element.
+tooltip-component.tooltip {
+  --color: var(--disabled-d-3);
+  --caret-border: 8px;
+  display: inline-flex;
+  gap: 6px;
+  overflow: visible;
+
+  &.show {
+    &.bubble {
+      bottom: calc(var(--caret-border) + 100%);
+      opacity: 1;
+    }
+    .bubble {
+      bottom: calc(var(--caret-border) + 100%);
+      opacity: 1;
+    }
+  }
+
+  .symbol {
+    border: 1px solid;
+    border-radius: 50%;
+    &.info {
+    }
+    &.danger {
+      --color: var(--danger);
+    }
+  }
+  .content {
+  }
+}
+// Appendable Tooltip.
+.bubble {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all 0.2s ease allow-discrete;
+  &.info {
+    --bg: var(--info);
+  }
+  &.danger {
+    --bg: var(--danger);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: inherit;
+    backdrop-filter: blur(calc(var(--caret-border) / 2));
+    border-left: var(--caret-border) solid transparent;
+    border-right: var(--caret-border) solid transparent;
+    border-top: var(--caret-border) solid var(--bg);
+    transition: inherit;
+  }
+}
