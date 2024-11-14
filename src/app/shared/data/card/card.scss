@@ -1,0 +1,109 @@
+card-component.card {
+  display: inline-block;
+
+  &.basic {
+    grid-template-areas: "title
+                          description";
+  }
+  &.image {
+    grid-template-areas: "title
+                          image
+                          description
+                          actions";
+  }
+  &.profile {
+    grid-template-areas: "image
+                          title
+                          description
+                          actions";
+  }
+  &.product {
+    grid-template-areas: "title
+                          image
+                          description
+                          price
+                          actions";
+  }
+  &.gallery {
+    grid-template-areas: "title
+                          image
+                          description
+                          actions";
+  }
+  &.metric {
+    grid-template-areas: "title
+                          description
+                          price";
+  }
+  &.notification {
+    grid-template-areas: "title
+                          description
+                          actions";
+  }
+  &.collapsible {
+    grid-template-areas: "title
+                          description
+                          collapsible
+                          actions";
+  }
+  &.blog {
+    grid-template-areas: "author date
+                          title
+                          description
+                          image
+                          actions";
+  }
+  &.interactive {
+    grid-template-areas: "title
+                          description
+                          form";
+  }
+
+  > * {
+    --pad: 0.5rem;
+    padding: var(--pad) calc(var(--pad) * 4);
+    margin-bottom: var(--pad);
+  }
+
+  .title {
+    grid-area: title;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  .description {
+    grid-area: description;
+    margin-block: auto;
+  }
+  .image {
+    grid-area: image;
+    width: fit-content;
+    margin-block: auto;
+  }
+  .actions {
+    grid-area: actions;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .author {
+    grid-area: author;
+    text-transform: capitalize;
+  }
+  .date {
+    grid-area: date;
+  }
+  .price {
+    grid-area: price;
+    font-size: 1.2rem;
+  }
+  .form {
+    grid-area: form;
+    width: 100%;
+  }
+  .collapsible {
+    grid-area: collapsible;
+    width: 100%;
+  }
+}
