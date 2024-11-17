@@ -1,23 +1,19 @@
 import { ComponentDecorator, ComponentText } from "@decorators";
 import { ICollapsible } from "./lang";
 
+import './collapsible.scss';
+
 @ComponentDecorator
 export class Collapsible extends ComponentText<ICollapsible> {
     protected init(): void {
-        const collapser = this.cElem('button');
-        const title = this.cElem('span');
-        const icon = this.cElem('span');
+        if (this.texts.type) this.classList.add(this.texts.type);
+        const details = this.cElem('details');
+        const summary = this.cElem('summary');
         const content = this.cElem('div');
-        collapser.className = title.className = icon.className = content.className = 'collapsible-';
-        collapser.className += 'header';
-        title.className += 'title';
-        icon.className += 'icon';
-        content.className += 'content';
-        title.innerHTML = this.texts.summary;
-        icon.innerText = '&#9660;';
-        content.innerHTML = `<p>${this.texts.content}</p>`;
-        collapser.onclick = () => this.classList.toggle('extand');
-        collapser.append(title, icon);
-        this.append(collapser, content);
+        summary.innerHTML = `<span>&#9658;</span> ${this.texts.summary}`;
+        content.innerHTML = this.texts.content;
+        content.className = 'content';
+        details.append(summary);
+        this.append(details, content);
     }
 }

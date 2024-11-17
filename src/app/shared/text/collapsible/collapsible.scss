@@ -1,31 +1,48 @@
 collapsible-component.collapsible {
-  display: grid;
-  grid-template-rows: 0fr;
-  overflow: hidden;
-  transition: all 0.5s ease;
-  &.extand {
-    grid-template-rows: 1fr;
-    .collapsible-content {
-      visibility: visible;
+  --max-width: 500px;
+  padding-inline: 10px;
+  &.info {
+    border-left: 2px solid var(--info);
+  }
+  &.warn {
+    border-left: 2px solid var(--warning);
+  }
+  &.danger {
+    border-left: 2px solid var(--danger);
+  }
+  details {
+    max-width: var(--max-width);
+    overflow: hidden;
+    &[open] {
+      + .content {
+        max-height: 200px;
+        overflow: auto;
+      }
+      span {
+        rotate: 90deg;
+        transition: rotate 0.2s ease-out;
+      }
     }
-    .collapsible-icon {
-      rotate: 180deg;
+  }
+
+  summary {
+    display: inline-block;
+    width: fit-content;
+    cursor: pointer;
+    &::-webkit-details-marker {
+      display: none;
+    }
+    span {
+      display: inline-block;
+      transition: rotate 0.2s 0.4s ease-out;
     }
   }
 
-  .collapsible-header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .collapsible-content {
-    min-height: 0;
-    transition: all 0.5s ease;
-    visibility: hidden;
-  }
-
-  .collapsible-icon {
-    transition: all 0.5s ease;
+  .content {
+    max-width: var(--max-width);
+    padding: 0 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 400ms ease;
   }
 }
