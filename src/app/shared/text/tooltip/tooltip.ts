@@ -37,7 +37,7 @@ export class TooltipEl extends Tooltip<ITooltipConfig> {
     private createSymbol(): void {
         const cls = ['i', '?'].includes(this.texts.type) ? 'info' : 'danger';
         const span = this.createSpan(`symbol ${cls}`);
-        span.dataset.symbol = this.texts.type;
+        span.innerText = this.texts.type;
         this.append(span);
     }
 
@@ -62,13 +62,13 @@ export class TooltipEl extends Tooltip<ITooltipConfig> {
 @ComponentDecorator
 export class TooltipAp extends Tooltip<ITooltipText> {
 
-    constructor(protected texts: ITooltipText, private ref: HTMLElement) {
+    constructor(protected texts: ITooltipText, ref: HTMLElement) {
         super(texts);
+        this.addTooltipListeners(ref);
     }
 
     protected init(): void {
         this.setAttribute("role", "tooltip");
-        this.addTooltipListeners(this.ref);
         this.createTooltip();
     }
 

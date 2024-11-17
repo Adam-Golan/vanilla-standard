@@ -1,44 +1,69 @@
-// Tooltip as Element.
-tooltip-component.tooltip {
-  --color: var(--disabled-d-3);
+:root {
+  --pad-block: 4px;
+  --pad-inline: calc(var(--pad-block) * 2);
   --caret-border: 8px;
-  display: inline-flex;
-  gap: 6px;
-  overflow: visible;
+  --show-pos: calc(var(--caret-border) + 100% + 4px);
+}
+// Tooltip as Element.
+tooltipap-component,
+tooltipel-component {
+  &.tooltip {
+    --font-size: 1.4rem;
+    --color: var(--disabled-l-3);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    overflow: visible;
 
-  &.show {
-    &.bubble {
-      bottom: calc(var(--caret-border) + 100%);
-      opacity: 1;
+    &.show {
+      &.bubble {
+        bottom: var(--show-pos);
+        opacity: 1;
+      }
+      .bubble {
+        bottom: var(--show-pos);
+        opacity: 1;
+      }
     }
-    .bubble {
-      bottom: calc(var(--caret-border) + 100%);
-      opacity: 1;
-    }
-  }
 
-  .symbol {
-    border: 1px solid;
-    border-radius: 50%;
-    &.info {
+    .symbol {
+      --symbol-size: calc(var(--font-size) * 0.7);
+      width: var(--font-size);
+      height: var(--font-size);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid;
+      border-radius: 50%;
+      font-size: var(--symbol-size);
+      &.info {
+        --color: var(--info);
+      }
+      &.danger {
+        --color: var(--danger);
+      }
     }
-    &.danger {
-      --color: var(--danger);
+    .content {
+      font-size: var(--font-size);
     }
-  }
-  .content {
   }
 }
 // Appendable Tooltip.
 .bubble {
+  padding: var(--pad-block) var(--pad-inline);
+  width: max-content;
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  border-radius: var(--caret-border);
+  background: var(--bg);
   opacity: 0;
-  transition: all 0.2s ease allow-discrete;
+  transition: all 0.2s ease;
+  font-weight: bold;
   &.info {
     --bg: var(--info);
+    --color: var(--dreidel-d-5);
   }
   &.danger {
     --bg: var(--danger);
@@ -46,14 +71,12 @@ tooltip-component.tooltip {
   &::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: calc(var(--caret-border) * -1);
     left: 50%;
     transform: translateX(-50%);
     opacity: inherit;
-    backdrop-filter: blur(calc(var(--caret-border) / 2));
     border-left: var(--caret-border) solid transparent;
     border-right: var(--caret-border) solid transparent;
     border-top: var(--caret-border) solid var(--bg);
-    transition: inherit;
   }
 }
