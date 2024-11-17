@@ -3,16 +3,17 @@ import { ComponentDecorator } from "@decorators";
 import './toast.scss';
 
 @ComponentDecorator
-export class ToastNotification extends HTMLElement {
-
-    showToast(message: string, ref: HTMLElement, type: 'success' | 'error' | 'info' | 'warn' | 'general' = 'general', autoClose = 5000): void {
-        this.innerHTML = message;
-        this.className = `toast ${type}`;
+export class Toast extends HTMLElement {
+    constructor(listener: Function, event: keyof HTMLElementEventMap, msg: string, ref: HTMLElement, type: 'success' | 'error' | 'info' | 'warn' | 'general' = 'general', private timeout = 5000) {
+        super();
+        listener(event, this.showToast.bind(this));
+        this.innerHTML = msg;
+        this.className = `toast ${type} ${ref === document.body ? 'body' : 'el'}`;
         ref.append(this);
+    }
+
+    private showToast(): void {
         setTimeout(() => this.classList.add('show'));
-        setTimeout(() => {
-            this.classList.remove('show');
-            setTimeout(() => ref.removeChild(this), 500);
-        }, autoClose);
+        setTimeout(() => this.classList.remove('show'), this.timeout);
     }
 }
