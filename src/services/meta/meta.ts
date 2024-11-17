@@ -5,7 +5,7 @@ export interface IMetaTags {
 }
 
 export function setMetaTags(tags: IMetaTags) {
-    const cElem = document.createElement;
+    const cElem = document.createElement.bind(document);
     const head = document.head;
     const description = cElem('meta');
     description.name = 'description';
