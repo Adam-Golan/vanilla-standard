@@ -1,15 +1,15 @@
 import { ModuleData, ModuleDecorator } from '@decorators';
 import { ICardConfig, ICardType, IAllCardKeys } from './lang';
-import { Form } from '@app/shared/data';
+import { Collapsible } from '@app/shared/text';
 import { Avatar } from '@app/shared/native';
+import { Form } from '@app/shared/data';
 
 import './card.scss';
-import { Collapsible } from '@app/shared/text';
 
 @ModuleDecorator
 export class Card<T extends ICardType> extends ModuleData<ICardConfig<T>> {
 
-    constructor(protected data: ICardConfig<T>, private cardType: T) {
+    constructor(private cardType: T, protected data: ICardConfig<T>) {
         super(data);
         this.classList.add(cardType);
     }
@@ -18,8 +18,8 @@ export class Card<T extends ICardType> extends ModuleData<ICardConfig<T>> {
         const sections = this.createCardSections();
         for (const section of sections) {
             const container = this.createCardSection(section);
-            this.createTitle(container);
-            this.createDesc(container);
+            if (section === 'title') this.createTitle(container);
+            if (section === 'description') this.createDesc(container);
             if (section === 'actions') this.createActions(container);
             if (section === 'collapsible') this.createCollpase(container);
             if (section === 'image') this.createImage(container);
@@ -106,7 +106,7 @@ export class Card<T extends ICardType> extends ModuleData<ICardConfig<T>> {
         if (key in this.data) {
             const span = this.cElem('span');
             span.innerHTML = `${(this.data as ICardConfig<'blog'> & ICardConfig<'product'>)[key]}`;
-            ref.append(ref);
+            ref.append(span);
         }
     }
     private createForm(ref: HTMLDivElement): void {
