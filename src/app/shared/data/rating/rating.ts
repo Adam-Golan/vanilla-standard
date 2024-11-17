@@ -4,7 +4,7 @@ import { IRatingData } from './data';
 import './rating.scss';
 
 @ComponentDecorator
-export class RatingComponent extends ComponentData<IRatingData> {
+export class Rating extends ComponentData<IRatingData> {
 
     constructor(protected data: IRatingData) {
         super(data);
@@ -13,7 +13,8 @@ export class RatingComponent extends ComponentData<IRatingData> {
     protected init(): void {
         for (let i = 1; i <= this.data.max; i++) {
             const star = document.createElement('span');
-            star.classList.add('star', i <= this.data.curr ? 'filled' : '');
+            star.classList.add('star');
+            if (i <= this.data.curr) star.classList.add('filled');
             star.dataset.value = `${i}`;
             star.onclick = () => this.handleRating(i);
             this.appendChild(star);
