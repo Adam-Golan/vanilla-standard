@@ -4,7 +4,7 @@ import { IBadgeConfig } from "./lang";
 import './badge.scss';
 
 @ComponentDecorator
-export class BadgeTag extends ComponentText<IBadgeConfig> {
+export class Badge extends ComponentText<IBadgeConfig> {
     
     constructor(protected texts: IBadgeConfig) {
         super(texts);
