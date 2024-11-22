@@ -7,8 +7,8 @@ import { MenuExtender } from "@app/shared";
 import './navbar.scss';
 
 @ComponentDecorator
-export class Navbar extends LinkBased {
-    screenWidth = this.appState.getData(StateKeys.device).width;
+export class Navbar<IState = Record<string, any>> extends LinkBased<IState> {
+    screenWidth = window.screen.width;
 
     protected init() {
         if (this.screenWidth <= 480) this.createHamburger();
@@ -18,7 +18,7 @@ export class Navbar extends LinkBased {
         if (this.screenWidth > 480) setTimeout(() => this.createExtender());
         // Setting active;
         setTimeout(() => this.setActive());
-        this.appState.subscribe(StateKeys.stateNavigate, this.setActive.bind(this));
+        this.appState.subscribe(StateKeys.navigate, this.setActive.bind(this));
         window.addEventListener("popstate", _ => this.setActive());
     }
 

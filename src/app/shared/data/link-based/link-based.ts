@@ -4,10 +4,10 @@ import { ILink, ILinks } from "./intefaces";
 import { StateKeys } from "@constants/stateKeys.constant";
 import { Link } from "./shared/link";
 
-export abstract class LinkBased extends ComponentData<IPages> {
+export abstract class LinkBased<IState> extends ComponentData<IPages> {
     links: ILinks = [];
 
-    constructor(protected pages: IPages, protected appState: State) {
+    constructor(protected pages: IPages, protected appState: State<IState>) {
         super(pages);
         this.links = this.prepareLinks();
         if (this.links[0].href === '/') this.links.splice(0, 1);
@@ -23,7 +23,7 @@ export abstract class LinkBased extends ComponentData<IPages> {
         const links = [];
         for (const [key, value] of Object.entries(pages)) {
             value.prototype instanceof Page
-                ? links.push({ href: key, text: key.replace('/', '') })
+                ? links.push({ href: key, text: key.slice(1) })
                 : links.push({ [key]: this.prepareLinks(value as IPages) });
         }
         return links;
@@ -45,7 +45,7 @@ export abstract class LinkBased extends ComponentData<IPages> {
     }
 
     protected navigate(href: string): void {
-        this.appState.publish(StateKeys.stateNavigate, href);
+        this.appState.publish(StateKeys.navigate, href);
     }
 
     static isILink(item: ILink | { [key: string]: ILinks }): item is ILink {

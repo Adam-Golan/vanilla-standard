@@ -4,11 +4,11 @@ import { ComponentDecorator } from "@decorators";
 import type { IPages, State } from "@services";
 
 @ComponentDecorator
-export class Footer extends LinkBased {
+export class Footer<IState = Record<string, any>> extends LinkBased<IState> {
     protected initOverride(): void {
         throw new Error("Method not implemented.");
     }
-    constructor(protected pages: IPages, protected appState: State, private texts: typeof home.FOOTER) {
+    constructor(protected pages: IPages, protected appState: State<IState>, private texts: typeof home.FOOTER) {
         super(pages, appState);
     }
     protected init(): void {
