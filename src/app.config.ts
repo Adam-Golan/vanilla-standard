@@ -1,5 +1,5 @@
 import { GetStarted, Home, Contact, Dialogs, Documentation, Forms } from "@app/pages"
-import { IPages, IMetaTags, OGCard } from "@services"
+import type { IPages, IMetaTags, OGCard} from "@services"
 
 export const appConfig: AppConfig = {
     siteURL: 'https://your-site.com', // Replace with your site's actual URL
