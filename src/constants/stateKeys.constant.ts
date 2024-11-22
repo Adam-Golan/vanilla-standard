@@ -1,11 +1,8 @@
 const StateKeys = {
-    lang: 'language',
-    nav: 'navigation',
-    device: 'device',
     // Events.
     // // Page.
-    stateNavigate: 'stateNavigate',
-    pageContentLoaded: 'pageContentLoaded',
+    navigate: 'navigate',
+    contentReady: 'contentReady',
     // // Dialogs.
     openModal: 'openModal',
     closeModal: 'closeModal',
@@ -14,4 +11,4 @@ const StateKeys = {
 } as const;
 
 
-export {StateKeys}
+export { StateKeys };
