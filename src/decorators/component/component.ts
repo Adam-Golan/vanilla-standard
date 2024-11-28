@@ -1,22 +1,15 @@
-import { Enlist } from "@decorators/utils/listing";
-import { TextBase, DataSubPage } from "../base";
-import { addMeta } from "@decorators/utils/adders";
+import { Enlist, addMeta } from "@decorators/utils";
+import { Basis } from "../base";
+import { State } from "@services";
 
 // Enlisting component into custom elements registry.
 export function ComponentDecorator(target: CustomElementConstructor) {
     Enlist('component', target);
 }
 
-export abstract class ComponentText<IText = Record<string, string>> extends TextBase<IText> {
-    constructor(protected texts: IText) {
-        super(texts);
-        addMeta(this, 'component');
-    }
-}
-
-export abstract class ComponentData<IData = Record<string, any>> extends DataSubPage<IData> {
-    constructor(protected data: IData) {
-        super(data);
+export abstract class Component<IConfig = Record<string, any>> extends Basis<IConfig> {
+    constructor(protected config: IConfig, protected moduleState?: State) {
+        super(config);
         addMeta(this, 'component');
     }
 }

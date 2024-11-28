@@ -1,6 +1,5 @@
-import { Enlist } from "@decorators/utils/listing";
-import { TextBase } from "@decorators/base";
-import { addMeta } from "@decorators/utils/adders";
+import { Basis } from "@decorators/base";
+import { Enlist, addMeta } from "@decorators/utils";
 import { State } from "@services";
 import { StateKeys } from "@constants/stateKeys.constant";
 import { LayoutType } from "@decorators/types/types";
@@ -11,9 +10,9 @@ export function PageDecorator(target: CustomElementConstructor) {
     Enlist('page', target);
 }
 
-export abstract class Page<IText extends BasePageText = any> extends TextBase<IText> {
+export abstract class Page<IText extends BasePageText = any> extends Basis<IText> {
     // Creating a page's state.
-    pageState = new State();
+    state = new State();
     // Creating a footer.
     footer: Footer;
     // Declatring layout type.
