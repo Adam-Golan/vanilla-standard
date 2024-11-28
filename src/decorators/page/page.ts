@@ -41,7 +41,7 @@ export abstract class Page<IText extends BasePageText = any> extends TextBase<IT
     }
 
     // End loader utility.
-    protected showPage(seconds = 0): void {
-        setTimeout(() => this.appState.publish(StateKeys.contentReady), seconds);
+    protected showPage(path = ''): void {
+        setTimeout(() => this.appState.publish(`${path}:${StateKeys.contentReady}`));
     }
 }
