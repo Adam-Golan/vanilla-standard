@@ -1,8 +1,8 @@
-import { ComponentData, ComponentDecorator } from "@decorators";
+import { Component, ComponentDecorator } from "@decorators";
 import { ILink } from "../intefaces";
 
 @ComponentDecorator
-export class Link extends ComponentData<ILink> {
+export class Link extends Component<ILink> {
     constructor(protected texts: ILink, private navigate: (path: string) => void) {
         super(texts);
     }

@@ -1,10 +1,10 @@
-import { ComponentData, ComponentDecorator } from '@decorators';
+import { Component, ComponentDecorator } from '@decorators';
 import { IRatingData } from './data';
 
 import './rating.scss';
 
 @ComponentDecorator
-export class Rating extends ComponentData<IRatingData> {
+export class Rating extends Component<IRatingData> {
 
     constructor(protected data: IRatingData) {
         super(data);

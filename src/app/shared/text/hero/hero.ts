@@ -1,4 +1,4 @@
-import { ComponentText, ComponentDecorator } from "@decorators";
+import { Component, ComponentDecorator } from "@decorators";
 import { IHeroText } from "./lang";
 import { State } from "@services";
 import { StateKeys } from "@constants/stateKeys.constant";
@@ -7,7 +7,7 @@ import { Link } from "@app/shared";
 import './hero.scss';
 
 @ComponentDecorator
-export class Hero extends ComponentText<IHeroText> {
+export class Hero extends Component<IHeroText> {
 
     constructor(protected texts: IHeroText, private pageState: State) {
         super(texts);

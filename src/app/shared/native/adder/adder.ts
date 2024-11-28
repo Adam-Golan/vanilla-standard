@@ -1,5 +1,5 @@
 import { ComponentDecorator } from "@decorators";
-import { addMeta } from "@decorators/utils/adders";
+import { addMeta } from "@decorators/utils";
 import { State } from "@services";
 import { StateKeys } from "@constants/stateKeys.constant";
 

@@ -1,7 +1,7 @@
 import { ComponentDecorator } from "@decorators";
 
 import './avatar.scss';
-import { addMeta } from "@decorators/utils/adders";
+import { addMeta } from "@decorators/utils";
 
 @ComponentDecorator
 export class Avatar extends HTMLElement {

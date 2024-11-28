@@ -1,10 +1,10 @@
 import { ComponentDecorator } from '@decorators';
 import './loader.scss';
-import { addMeta } from '@decorators/utils/adders';
+import { addMeta } from '@decorators/utils';
 
 @ComponentDecorator
 export class Loader extends HTMLElement {
-    
+
     constructor() {
         super();
         addMeta(this, 'component');

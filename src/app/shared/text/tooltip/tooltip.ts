@@ -1,9 +1,9 @@
-import { ComponentDecorator, ComponentText } from "@decorators";
+import { ComponentDecorator, Component } from "@decorators";
 import { ITooltipConfig, ITooltipText } from "./lang";
 
 import './tooltip.scss';
 
-abstract class Tooltip<T extends ITooltipText> extends ComponentText<T> {
+abstract class Tooltip<T extends ITooltipText> extends Component<T> {
     constructor(protected texts: T) {
         super(texts);
         this.classList.add('tooltip');

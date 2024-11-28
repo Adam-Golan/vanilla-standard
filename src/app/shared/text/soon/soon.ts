@@ -1,10 +1,10 @@
-import { ComponentText, ComponentDecorator } from "@decorators";
+import { Component, ComponentDecorator } from "@decorators";
 import { ISoonText } from "./lang";
 
 import './soon.scss';
 
 @ComponentDecorator
-export class Soon extends ComponentText<ISoonText['pageName']> {
+export class Soon extends Component<ISoonText['pageName']> {
 
     constructor(protected texts: ISoonText['pageName']) {
         super(texts);

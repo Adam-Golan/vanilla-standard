@@ -1,8 +1,8 @@
-import { ComponentData, ComponentDecorator } from "@decorators";
+import { Component, ComponentDecorator } from "@decorators";
 import { IRowData } from "./interfaces";
 
 @ComponentDecorator
-export class Row extends ComponentData {
+export class Row extends Component {
     constructor(protected data: IRowData, private type: 'head' | 'body' = 'body') {
         super(data);
     }

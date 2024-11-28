@@ -1,10 +1,10 @@
-import { ComponentData } from "@decorators";
+import { Component } from "@decorators";
 import type { IPages, State } from "@services";
 import type { ILink, ILinks } from "./intefaces";
 import { StateKeys } from "@constants/stateKeys.constant";
 import { Link } from "./shared/link";
 
-export abstract class LinkBased<IState> extends ComponentData<IPages> {
+export abstract class LinkBased<IState> extends Component<IPages> {
     links: ILinks = [];
 
     constructor(protected pages: IPages, protected state: State<IState>) {

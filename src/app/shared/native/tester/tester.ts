@@ -1,5 +1,5 @@
 import { ComponentDecorator } from "@decorators";
-import { addMeta } from "@decorators/utils/adders";
+import { addMeta } from "@decorators/utils";
 
 import './tester.scss';
 

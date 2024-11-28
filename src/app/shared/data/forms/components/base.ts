@@ -1,7 +1,7 @@
-import { ComponentData } from "@decorators";
+import { Component } from "@decorators";
 import { Props, InputType } from "../interfaces";
 
-export abstract class FormComponent<P extends Props = Props> extends ComponentData<P> {
+export abstract class FormComponent<P extends Props = Props> extends Component<P> {
     value: string = '';
     field: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
     hasError: boolean = false;

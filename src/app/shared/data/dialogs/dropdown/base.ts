@@ -1,8 +1,8 @@
-import { ComponentData } from "@decorators";
+import { Component } from "@decorators";
 
 import './dropdown.scss';
 
-export abstract class BaseDropdown<T> extends ComponentData<T[]> {
+export abstract class BaseDropdown<T> extends Component<T[]> {
     dialog = this.cElem('dialog');
 
     constructor(protected list: T[] = [], protected cb: (selected: T) => void) {

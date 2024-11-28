@@ -1,4 +1,4 @@
-import { ModuleData, ModuleDecorator } from "@decorators";
+import { Module, ModuleDecorator } from "@decorators";
 import { IFormMap, IFormBtns } from "./interfaces/maps";
 import { Autocomplete, Input, Select, Textarea, Checkbox, Radio, Range, Switch } from "./components";
 import { API } from "@services/API/API";
@@ -8,7 +8,7 @@ import { FormFieldType } from "./interfaces";
 import './forms.scss';
 
 @ModuleDecorator
-export class Form extends ModuleData {
+export class Form extends Module {
     query: { [name: string]: string } = {};
     proxy = new API();
     fields: FormComponent[] = [];

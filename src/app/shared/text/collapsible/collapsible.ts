@@ -1,17 +1,17 @@
-import { ComponentDecorator, ComponentText } from "@decorators";
+import { ComponentDecorator, Component } from "@decorators";
 import { ICollapsible } from "./lang";
 
 import './collapsible.scss';
 
 @ComponentDecorator
-export class Collapsible extends ComponentText<ICollapsible> {
+export class Collapsible extends Component<ICollapsible> {
     protected init(): void {
-        if (this.texts.type) this.classList.add(this.texts.type);
+        if (this.config.type) this.classList.add(this.config.type);
         const details = this.cElem('details');
         const summary = this.cElem('summary');
         const content = this.cElem('div');
-        summary.innerHTML = `<span>&#9658;</span> ${this.texts.summary}`;
-        content.innerHTML = this.texts.content;
+        summary.innerHTML = `<span>&#9658;</span> ${this.config.summary}`;
+        content.innerHTML = this.config.content;
         content.className = 'content';
         details.append(summary);
         this.append(details, content);

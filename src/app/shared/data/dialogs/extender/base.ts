@@ -1,9 +1,9 @@
-import { ComponentData } from "@decorators";
+import { Component } from "@decorators";
 import { BaseDropdown } from "../dropdown/base";
 
 import './extender.scss';
 
-export abstract class BaseExtender<T> extends ComponentData<T[]> {
+export abstract class BaseExtender<T> extends Component<T[]> {
     dropdown: BaseDropdown<T>;
     constructor(protected list: T[], protected type: 'dots' | 'caret') {
         super(list);

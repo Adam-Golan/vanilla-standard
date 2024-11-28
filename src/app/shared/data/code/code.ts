@@ -1,8 +1,8 @@
-import { ComponentData, ComponentDecorator } from "@decorators";
+import { Component, ComponentDecorator } from "@decorators";
 
 import './code.scss';
 
-abstract class Code extends ComponentData<string> {
+abstract class Code extends Component<string> {
     // Stringified code.
     constructor(protected code: string, protected preText?: string, protected postText?: string) {
         super(code);

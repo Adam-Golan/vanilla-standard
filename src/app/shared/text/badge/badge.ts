@@ -1,10 +1,10 @@
-import { ComponentDecorator, ComponentText } from "@decorators";
+import { ComponentDecorator, Component } from "@decorators";
 import { IBadgeConfig } from "./lang";
 
 import './badge.scss';
 
 @ComponentDecorator
-export class Badge extends ComponentText<IBadgeConfig> {
+export class Badge extends Component<IBadgeConfig> {
     
     constructor(protected texts: IBadgeConfig) {
         super(texts);

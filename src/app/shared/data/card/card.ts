@@ -1,4 +1,4 @@
-import { ModuleData, ModuleDecorator } from '@decorators';
+import { Module, ModuleDecorator } from '@decorators';
 import { ICardConfig, ICardType, IAllCardKeys } from './lang';
 import { Collapsible } from '@app/shared/text';
 import { Avatar } from '@app/shared/native';
@@ -7,7 +7,7 @@ import { Form } from '@app/shared/data';
 import './card.scss';
 
 @ModuleDecorator
-export class Card<T extends ICardType> extends ModuleData<ICardConfig<T>> {
+export class Card<T extends ICardType> extends Module<ICardConfig<T>> {
 
     constructor(private cardType: T, protected data: ICardConfig<T>) {
         super(data);
