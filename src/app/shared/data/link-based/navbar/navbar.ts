@@ -5,6 +5,7 @@ import { Link } from "@app/shared";
 import { MenuExtender } from "@app/shared";
 
 import './navbar.scss';
+import { Navigation } from "@services";
 
 @ComponentDecorator
 export class Navbar<IState = Record<string, any>> extends LinkBased<IState> {
@@ -18,7 +19,7 @@ export class Navbar<IState = Record<string, any>> extends LinkBased<IState> {
         if (this.screenWidth > 480) setTimeout(() => this.createExtender());
         // Setting active;
         setTimeout(() => this.setActive());
-        this.appState.subscribe(StateKeys.navigate, this.setActive.bind(this));
+        this.state.subscribe(StateKeys.navigate, this.setActive.bind(this));
         window.addEventListener("popstate", _ => this.setActive());
     }
 
@@ -84,10 +85,9 @@ export class Navbar<IState = Record<string, any>> extends LinkBased<IState> {
     // }
 
     private setActive(): void {
-        const path = location.pathname === '/' ? '/home' : location.pathname;
-        const links = Array.from(this.clsElem('link'));
+        const links = Array.from(this.clsElem('link')) as Link[];
         for (const link of links) {
-            (link as Link).dataset.href === encodeURI(path)
+            link.dataset.href?.slice(1) === encodeURI(Navigation.lastCrumb())
                 ? link.classList.add('active')
                 : link.classList.remove('active');
         }
