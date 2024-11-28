@@ -1,5 +1,5 @@
 import './style/dist/style.css';
-import './utils/stringExtensions';
+import './utils';
 
 import { Device, Language, Navigation, setMetaTags, State, setOpenGraphTags } from "@services";
 import { Modal, Navbar } from "@app/shared";
@@ -34,15 +34,10 @@ class Main {
   private init() {
     this.app.append(new Navbar(this.navigation.pages, this.appState));
     this.subscribes();
-    this.navigation.fisrtLoad(location.pathname);
   }
 
   private subscribes(): void {
     const modals: { [key: string]: Modal } = {};
-    // Page Navigation.
-    this.appState.subscribe(StateKeys.navigate, (page) => this.navigation.loading(page));
-    // Load Page.
-    this.appState.subscribe(StateKeys.contentReady, _ => this.navigation.showPage());
     // Modals.
     this.appState.subscribe(StateKeys.openModal, (key: string, content) => modals[key] = new Modal(this.app.append, content));
     this.appState.subscribe(StateKeys.closeModal, (key: string) => { modals[key].closeModal(); delete modals[key]; });
