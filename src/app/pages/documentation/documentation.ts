@@ -8,20 +8,12 @@ import { config } from "./pages";
 export class Documentation extends Page<typeof texts.docs> {
     navigation: Navigation;
     protected override init() {
-        // console.time('label');
-        // console.timeLog('label');
         const content = this.cElem('div');
-        // console.log(this.texts);
-        // console.log(this.appState);
-        setTimeout(() => {
-            // console.log('after timeout',this.appState);
-            // console.timeEnd('label');
-            this.navigation = new Navigation(this.pageState, content, config, 'forms', 'docs');
-            this.navigation.setTexts(this.texts);
-            const nav = new Navbar(this.navigation.pages, this.pageState);
-            this.append(nav, content);
-            super.init();
-            this.showPage();
-        });
+        this.navigation = new Navigation(this.state, content, config, 'forms', 'docs');
+        this.navigation.setTexts(this.texts);
+        const nav = new Navbar(this.navigation.pages, this.state);
+        this.append(nav, content);
+        super.init();
+        this.showPage();
     }
 }
