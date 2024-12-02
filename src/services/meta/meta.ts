@@ -4,6 +4,12 @@ export interface IMetaTags {
     author?: string;
 }
 
+/**
+ * Sets the meta tags in the document head. The description meta tag is required,
+ * the keywords and author meta tags are optional.
+ *
+ * @param {IMetaTags} tags - an object with description, keywords, and author properties.
+ */
 export function setMetaTags(tags: IMetaTags) {
     const cElem = document.createElement.bind(document);
     const head = document.head;
