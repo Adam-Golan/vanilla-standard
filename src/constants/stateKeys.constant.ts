@@ -1,6 +1,6 @@
 const StateKeys = {
     // Events.
-    // // Page.
+    // // Navigation.
     navigate: 'navigate',
     contentReady: 'contentReady',
     // // Dialogs.
