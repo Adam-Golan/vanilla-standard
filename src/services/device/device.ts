@@ -3,14 +3,11 @@ export abstract class Device {
     // Platform Detection
     static get platform(): string {
         const ua = navigator.userAgent;
-        return /Win/.test(ua)
-            ? 'windows'
-            : /Mac/.test(ua)
-                ? 'macos'
-                : /Linux/.test(ua)
-                    ? 'linux'
-                    : 'unknown';
-    }
+        if (/Win/.test(ua)) return 'windows';
+        if (/Mac/.test(ua)) return 'macos';
+        if (/Linux/.test(ua)) return 'linux';
+        return 'unknown';
+      }
 
     // OS Detection
     static get os(): string {
@@ -20,8 +17,7 @@ export abstract class Device {
             ['linux', 'Linux'],
             ['android', 'Android'],
             ['iphone', 'iOS'],
-            ['ipad', 'iOS'],
-            ['unknown', 'Unknown OS'],
+            ['ipad', 'iOS']
         ])
 
         return osMap.get(Device.platform) || 'Unknown OS';
