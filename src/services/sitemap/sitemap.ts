@@ -12,8 +12,14 @@ interface SiteMapRoute {
     changeFrequency?: string;
 }
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
+/**
+ * Generates a sitemap in XML format based on the routes defined in appConfig.
+ *
+ * If a route has lastModified or changeFrequency properties, they are used in the sitemap.
+ * Otherwise, the current date is used for lastModified and "monthly" is used for changeFrequency.
+ *
+ * @returns A string containing the generated XML sitemap.
+ */
 function generateSitemap(): string {
     const baseUrl = appConfig.siteURL;
     const xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
@@ -30,6 +36,7 @@ function generateSitemap(): string {
 }
 
 ((path) => {
+    const __dirname = dirname(fileURLToPath(import.meta.url));
     const sitemap = generateSitemap();
     const dirPath = join(__dirname, path);
     const filePath = join(dirPath, 'sitemap.xml');
