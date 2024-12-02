@@ -1,8 +1,8 @@
 import { Basis } from "@decorators/base";
 import { Enlist, addMeta } from "@decorators/utils";
-import { State } from "@services";
+import { type Navigation, State } from "@services";
 import { StateKeys } from "@constants/stateKeys.constant";
-import { LayoutType } from "@decorators/types/types";
+import { LayoutType } from "@decorators/types";
 import { Footer } from "@app/shared";
 import { BasePageText } from "@i18n/interfaces";
 
@@ -15,8 +15,10 @@ export abstract class Page<IText extends BasePageText = any> extends Basis<IText
     state = new State();
     // Creating a footer.
     footer: Footer;
-    // Declatring layout type.
+    // Declaring layout type.
     layout: LayoutType = 'single_column';
+    // Declaring optional navigation.
+    navigation?: Navigation;
 
     constructor(protected texts: IText, protected appState: State) {
         super(texts);
@@ -30,7 +32,10 @@ export abstract class Page<IText extends BasePageText = any> extends Basis<IText
         // Creating footer.
         this.createFooter();
         // Erase if upsetting.
-        if (import.meta.env.DEV) console.log('Don\'t forget to use showPage function, or you\'ll be stuck with the loader element.');
+        if (import.meta.env.DEV) {
+            console.log('Don\'t forget to use showPage function, or you\'ll be stuck with the loader element.');
+            if (this.navigation) console.log(`${this.constructor.name}: Don\'t forget to create a static method getPages(): IPages`);
+        }
     }
 
     private createFooter(): void {
