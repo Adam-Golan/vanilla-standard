@@ -5,6 +5,12 @@ export interface OGCard {
     url: string;
 }
 
+/**
+ * Sets Open Graph tags in the document head. This is used to control what is 
+ * displayed when a user shares a link to your website on social media.
+ * @param {OGCard} card - an object containing the title, description, imageUrl, and url
+ * to be used in the Open Graph tags.
+ */
 export function setOpenGraphTags({ title, description, imageUrl, url }: OGCard) {
     const cElem = document.createElement;
     const head = document.head;
