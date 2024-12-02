@@ -1,7 +1,7 @@
 import './style/dist/style.css';
 import './utils';
 
-import { Device, Language, Navigation, setMetaTags, State, setOpenGraphTags } from "@services";
+import { Navigation, setMetaTags, State, setOpenGraphTags } from "@services";
 import { Modal, Navbar } from "@app/shared";
 import { StateKeys } from '@constants/stateKeys.constant';
 import { appConfig } from 'app.config';
@@ -10,10 +10,8 @@ class Main {
   // App element.
   app = document.getElementById('app') ?? this.createApp();
   // Services.
-  device: Device;
   navigation: Navigation;
   appState: State;
-  i18n: Language;
 
   // Elements.
   constructor() {
@@ -24,6 +22,10 @@ class Main {
     this.navigation.importTexts().then(_ => this.init()); // Importing application's texts.
   }
 
+  /**
+   * Creates an 'app' element if it doesn't exist.
+   * @returns - 'app' element.
+   */
   private createApp(): HTMLDivElement {
     const app = document.createElement('div');
     app.id = 'app';
@@ -31,11 +33,21 @@ class Main {
     return app;
   }
 
-  private init() {
-    this.app.append(new Navbar(this.navigation.pages, this.appState));
+  /**
+   * Initializes the application.
+   * Adds a Navbar to the application's 'app' element and subscribes to events.
+   * @returns - Nothing.
+   */
+  private init(): void {
+    this.app.append(new Navbar(this.navigation.tree.children, this.appState));
     this.subscribes();
   }
 
+  /**
+   * Subscribes to events.
+   * Creates a modal if StateKeys.openModal is emitted, and removes it if StateKeys.closeModal is emitted.
+   * @returns - Nothing.
+   */
   private subscribes(): void {
     const modals: { [key: string]: Modal } = {};
     // Modals.
