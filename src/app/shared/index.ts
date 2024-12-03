@@ -1,4 +1,2 @@
-
-export * from './text';
-export * from './data';
-export * from './native';
+export * from './components';
+export * from './modules';

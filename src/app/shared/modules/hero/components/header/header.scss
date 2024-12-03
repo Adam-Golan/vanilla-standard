@@ -1,0 +1,17 @@
+.header {
+  padding: 2vw;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  h1,
+  h3 {
+    margin: 2.5vw;
+  }
+  h1 {
+    font-size: 2.5rem;
+    text-transform: capitalize;
+  }
+  h3 {
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+}

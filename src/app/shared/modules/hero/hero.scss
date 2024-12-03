@@ -1,0 +1,49 @@
+hero-module.hero {
+  height: var(--heroHeight);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  z-index: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  .header {
+    background: transparent;
+  }
+  h1 {
+    font-size: 4rem;
+    text-transform: capitalize;
+  }
+
+  h3 {
+    font-weight: normal;
+  }
+
+  .link {
+    display: inline-block;
+    padding: calc(var(--heroPadding) * 0.4) calc(var(--heroPadding) * 0.75);
+    background: var(--bg);
+    border-radius: calc(var(--heroPadding) / 8);
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--bgShadow);
+      box-shadow: 0 0 10px 2px;
+      scale: 1.05;
+    }
+  }
+}
