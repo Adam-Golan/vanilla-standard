@@ -1,11 +1,11 @@
 import { Page, PageDecorator } from "@decorators";
-import { texts } from "@i18n/en/lang";
-import { Hero } from "@app/shared";
+import type { texts } from "@i18n/en/lang";
+import { Soon } from "@app/shared";
 
 @PageDecorator
-export class Contact extends Page<typeof texts.contact> {
+export class ContactUs extends Page<typeof texts.contactus> {
     protected async init() {
-        this.append(new Hero(this.texts.HERO, this.pageState));
+        this.append(new Soon(this.texts.SOON.pageName));
         super.init();
         this.showPage();
     }
