@@ -6,8 +6,8 @@ import './home.scss';
 
 @PageDecorator
 export class Home extends Page<typeof texts.home> {
-    protected async init() {
-        this.append(new Hero(this.texts.HERO, this.pageState));
+    protected init() {
+        this.append(new Hero(this.texts.HERO, this.appState));
         super.init();
         this.showPage();
     }

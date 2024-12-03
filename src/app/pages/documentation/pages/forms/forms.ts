@@ -1,8 +1,9 @@
 import { Page, PageDecorator } from "@decorators";
-import { Header, Fluid, Table, Form, Top, CodeChunk, CodeWord } from "@app/shared";
+import { Fluid, Table, Form, CodeChunk, CodeWord } from "@app/shared";
 import { texts } from "@i18n/en/lang";
-import { IFormMap, IInputProps, ITextareaProps } from "@app/shared/data/forms/interfaces";
+import { IFormMap, IInputProps, ITextareaProps } from "@app/shared/modules/form/interfaces";
 import { Section } from "@i18n/en/documentation/forms/interfaces";
+import { Header } from "@app/shared/modules/hero/components";
 
 import './forms.scss';
 
@@ -13,7 +14,7 @@ export class Forms extends Page<typeof texts.docs.forms> {
     protected async init() {
         this.fluid = new Fluid();
         this.populateFluid();
-        this.append(new Header(this.texts.HEADER), new Top(this), this.fluid);
+        this.append(new Header(this.texts.HEADER), this.fluid);
         super.init();
         this.showPage('docs');
     }
