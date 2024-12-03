@@ -25,11 +25,11 @@ interface INotificationCard extends IBasicCard {
     }[];
 }
 
-interface ICollapsibleCard extends INotificationCard {
+interface ICollapsibleCard extends Partial<INotificationCard> {
     collapsible: ICollapsible;
 }
 
-interface IImageCard extends INotificationCard {
+interface IImageCard extends Partial<INotificationCard> {
     image: string;
 }
 
