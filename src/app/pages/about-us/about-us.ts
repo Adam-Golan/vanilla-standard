@@ -1,5 +1,5 @@
 import { Page, PageDecorator } from "@decorators";
-import type{ texts } from "@i18n/en/lang";
+import type { texts } from "@i18n/en/lang";
 import { Soon } from "@app/shared";
 
 @PageDecorator

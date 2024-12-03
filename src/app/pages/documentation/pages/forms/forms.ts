@@ -1,6 +1,6 @@
 import { Page, PageDecorator } from "@decorators";
 import { Fluid, Table, Form, CodeChunk, CodeWord } from "@app/shared";
-import { texts } from "@i18n/en/lang";
+import type { texts } from "@i18n/en/lang";
 import { IFormMap, IInputProps, ITextareaProps } from "@app/shared/modules/form/interfaces";
 import { Section } from "@i18n/en/documentation/forms/interfaces";
 import { Header } from "@app/shared/modules/hero/components";

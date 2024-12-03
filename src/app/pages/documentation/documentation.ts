@@ -1,5 +1,5 @@
 import { Page, PageDecorator } from "@decorators";
-import { texts } from "@i18n/en/lang";
+import type { texts } from "@i18n/en/lang";
 import { Navbar, Top } from "@app/shared";
 import { Navigation } from "@services";
 import { config } from "./pages";
