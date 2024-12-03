@@ -1,5 +1,4 @@
-import { IHeroText } from "@app/shared/text/hero/lang";
-import { ISoonText } from "@app/shared/text/soon/lang";
+import { ISoonText } from "@app/shared/components/soon/lang";
 
 export const contactus = {
     HEADER: 'contact',

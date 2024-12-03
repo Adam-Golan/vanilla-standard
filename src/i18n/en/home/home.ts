@@ -1,4 +1,4 @@
-import { IHeroText } from "@app/shared/text/hero/lang";
+import { IHeroText } from '@app/shared/modules/hero/lang';
 
 export const home = {
     HEADER: 'welcome',

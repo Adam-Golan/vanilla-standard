@@ -1,4 +1,4 @@
-import { FooterText } from '@app/shared/link-based/intefaces';
+import { FooterText } from '@app/shared/components/link-based/intefaces';
 
 export interface BasePageText {
     FOOTER: FooterText;

@@ -1,5 +1,5 @@
-import { FooterText } from "@app/shared/data/link-based/intefaces";
-import { ISoonText } from "@app/shared/text/soon/lang";
+import { FooterText } from "@app/shared/components/link-based/intefaces";
+import { ISoonText } from "@app/shared/components/soon/lang";
 
 export const getstarted = {
     SOON: {
