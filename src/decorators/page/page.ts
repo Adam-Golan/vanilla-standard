@@ -3,8 +3,8 @@ import { Enlist, addMeta } from "@decorators/utils";
 import { type Navigation, State } from "@services";
 import { StateKeys } from "@constants/stateKeys.constant";
 import { LayoutType } from "@decorators/types";
-import { Footer } from "@app/shared";
 import { BasePageText } from "@i18n/interfaces";
+import { IFooterConfig } from "@app/shared/modules/footer/types";
 
 export function PageDecorator(target: CustomElementConstructor) {
     Enlist('page', target);
@@ -13,8 +13,6 @@ export function PageDecorator(target: CustomElementConstructor) {
 export abstract class Page<IText extends BasePageText = any> extends Basis<IText> {
     // Creating a page's state.
     state = new State();
-    // Creating a footer.
-    footer: Footer;
     // Declaring layout type.
     layout: LayoutType = 'single_column';
     // Declaring optional navigation.
@@ -29,8 +27,6 @@ export abstract class Page<IText extends BasePageText = any> extends Basis<IText
 
     // Useful with super.init().
     protected init(): void {
-        // Creating footer.
-        this.createFooter();
         // Erase if upsetting.
         if (import.meta.env.DEV) {
             console.log('Don\'t forget to use showPage function, or you\'ll be stuck with the loader element.');
@@ -38,14 +34,12 @@ export abstract class Page<IText extends BasePageText = any> extends Basis<IText
         }
     }
 
-    private createFooter(): void {
-        // this.footer = new Footer(this.appState);
-        // this.footer.texts = this.texts.FOOTER;
-        // this.append(this.footer);
-    }
-
     // End loader utility.
     protected showPage(path = ''): void {
         setTimeout(() => this.appState.publish(`${path}:${StateKeys.contentReady}`));
+    }
+    
+    protected updateFooter(newConfig: IFooterConfig): void {
+        setTimeout(() => this.appState.publish(StateKeys.footerUpdate, newConfig));
     }
 }

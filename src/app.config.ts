@@ -1,4 +1,5 @@
 import { GetStarted, Home, ContactUs, Documentation, AboutUs } from "@app/pages"
+import { IFooterConfig } from "@app/shared/modules/footer/types";
 import type { IMetaTags, OGCard} from "@services"
 import type { IPage, IPages } from "@services/navigation/types";
 
@@ -22,5 +23,6 @@ interface AppConfig {
     siteURL: string;
     routes: IPages,
     meta: IMetaTags,
-    OGCard?: OGCard
+    OGCard?: OGCard,
+    footer?: IFooterConfig
 }

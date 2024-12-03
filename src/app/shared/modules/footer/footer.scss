@@ -1,0 +1,38 @@
+footer-module.footer {
+    display: grid;
+    grid-template-areas:
+      "about links social"
+      "about contact social"
+      "rights rights rights";
+    grid-gap: 20px;
+    padding: 20px;
+  }
+  
+  .about {
+    grid-area: about;
+    display: inline-flex;
+    flex-direction: column;
+  }
+  
+  .links {
+    grid-area: links;
+    display: inline-flex;
+    flex-direction: column;
+  }
+  
+  .contact {
+    grid-area: contact;
+    display: inline-flex;
+    flex-direction: column;
+  }
+  
+  .socials {
+    grid-area: social;
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  
+  .copyrights {
+    grid-area: rights;
+    text-align: center;
+  }
