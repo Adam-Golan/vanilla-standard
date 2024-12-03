@@ -1,5 +1,5 @@
 export abstract class Basis<IConfig> extends HTMLElement {
-    
+
     /**
      * Construct a new `Basis` instance.
      *
@@ -58,5 +58,18 @@ export abstract class Basis<IConfig> extends HTMLElement {
      */
     protected tagElem<K extends keyof HTMLElementTagNameMap>(tag: K): HTMLCollectionOf<HTMLElementTagNameMap[K]> {
         return this.getElementsByTagName<K>(tag);
+    }
+
+    /**
+     * Creates a container element for the component.
+     * The container element is a div with the class "container" and the
+     * given class name.
+     * @param cls The class name to add to the container element.
+     * @returns The created container element.
+     */
+    protected createContainer(cls: string): HTMLDivElement {
+        const container = this.cElem('div');
+        container.classList.add('container', cls);
+        return container;
     }
 }
