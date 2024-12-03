@@ -1,4 +1,4 @@
-import { GetStarted, Home, Contact } from "@app/pages"
+import { GetStarted, Home, ContactUs, Documentation, AboutUs } from "@app/pages"
 import type { IMetaTags, OGCard} from "@services"
 import type { IPage, IPages } from "@services/navigation/types";
 
@@ -7,7 +7,9 @@ export const appConfig: AppConfig = {
     routes: new Map<string, IPage>([
         ['home', Home],
         ['get-started', GetStarted],
-        ['contact-us', Contact],
+        ['docs', Documentation],
+        ['about-us', AboutUs],
+        ['contact-us', ContactUs],
     ]),
     meta: {
         description: "Welcome to Vanilla, a fast and reliable web development frame.",
