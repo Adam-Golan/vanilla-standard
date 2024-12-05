@@ -10,15 +10,13 @@ class Main {
   // App element.
   app = document.getElementById('app') ?? this.createApp();
   // Services.
-  navigation: Navigation;
-  appState: State;
+  appState: State = new State();
+  navigation: Navigation = new Navigation(this.appState, this.app, appConfig.routes);
 
   // Elements.
   constructor() {
     setMetaTags(appConfig.meta);
     if (appConfig.OGCard) setOpenGraphTags(appConfig.OGCard);
-    this.appState = new State();
-    this.navigation = new Navigation(this.appState, this.app, appConfig.routes);
     this.navigation.importTexts().then(_ => this.init()); // Importing application's texts.
   }
 
