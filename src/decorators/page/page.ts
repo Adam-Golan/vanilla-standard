@@ -52,12 +52,12 @@ export abstract class Page<IText extends BasePageText = any> extends Basis<IText
 
     /**
      * Shows the page after the page's content is loaded.
-     * @param path The path of the page to be shown.
+     * @param path The path of the page to be shown, defaults to '/'.
      * @remarks
      * This method is not called automatically.
      * You need to show the page manually, by calling this method.
      */
-    protected showPage(path = ''): void {
+    protected showPage(path = '/'): void {
         setTimeout(() => this.appState.publish(`${path}:${StateKeys.contentReady}`));
     }
     
