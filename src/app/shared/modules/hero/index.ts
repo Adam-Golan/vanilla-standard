@@ -18,6 +18,6 @@ export class Hero extends Module<IHeroText> {
         this.style.backgroundImage = `url(${this.texts.img})`;
         this.append(new Header(this.texts));
         if (this.texts.anchor?.text && this.texts.anchor?.href)
-            this.append(new Link(this.texts.anchor, () => this.pageState.publish(StateKeys.navigate, this.texts.anchor?.href)));
+            this.append(new Link(this.texts.anchor, () => this.pageState.publish(`/:${StateKeys.navigate}`, this.texts.anchor?.href)));
     }
 }
