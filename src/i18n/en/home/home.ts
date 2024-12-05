@@ -1,14 +1,13 @@
 import { IHeroText } from '@app/shared/modules/hero/lang';
 
 export const home = {
-    HEADER: 'welcome',
     HERO: {
         img: '/hero.jpeg',
         header: 'welcome to home page!',
         subHeader: 'this is sub header...',
         anchor: {
             text: 'get started',
-            href: 'get-started'
+            href: '/get-started'
         }
     } as IHeroText,
     FOOTER: {
