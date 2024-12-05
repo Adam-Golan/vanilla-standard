@@ -16,7 +16,7 @@ export class Forms extends Page<typeof texts.docs.forms> {
         this.populateFluid();
         this.append(new Header(this.texts.HEADER), this.fluid);
         super.init();
-        this.showPage('docs');
+        this.showPage('/docs');
     }
 
     private populateFluid(): void {

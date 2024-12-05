@@ -8,7 +8,7 @@ import { config } from "./pages";
 export class Documentation extends Page<typeof texts.docs> {
     protected override init() {
         const content = this.cElem('div');
-        this.navigation = new Navigation(this.state, content, config, 'forms', 'docs');
+        this.navigation = new Navigation(this.state, content, config, '/forms', '/docs');
         this.navigation.setTexts(this.texts);
         const nav = new Navbar(this.navigation.tree.children, this.state);
         this.append(nav, content, new Top(this));

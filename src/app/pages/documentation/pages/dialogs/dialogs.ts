@@ -7,6 +7,6 @@ export class Dialogs extends Page<typeof texts.docs.dialogs> {
     protected async init() {
         this.append(new Soon(this.texts.SOON.pageName));
         super.init();
-        this.showPage();
+        this.showPage('/docs');
     }
 }
