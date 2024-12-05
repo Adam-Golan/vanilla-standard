@@ -1,13 +1,11 @@
 footer-module.footer {
-    display: grid;
-    grid-template-areas:
-      "about links social"
-      "about contact social"
-      "rights rights rights";
-    grid-gap: 20px;
-    padding: 20px;
-  }
-  
+  display: grid;
+  grid-template-areas:
+    "about links social"
+    "about contact social"
+    "rights rights rights";
+  grid-gap: 20px;
+  padding: 20px;
   .about {
     grid-area: about;
     display: inline-flex;
@@ -36,3 +34,5 @@ footer-module.footer {
     grid-area: rights;
     text-align: center;
   }
+}
+

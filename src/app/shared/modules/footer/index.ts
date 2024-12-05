@@ -1,8 +1,8 @@
 import { ModuleDecorator, Module } from "@decorators";
 import type { State } from "@services";
 import { IFooterConfig } from "./types";
+import { Link } from "@app/shared/components";
 import { Form } from "@app/shared/modules";
-import { Link } from "../../components/link-based";
 import { StateKeys } from "@constants/stateKeys.constant";
 
 import './footer.scss';
