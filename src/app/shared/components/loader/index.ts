@@ -1,14 +1,9 @@
-import { ComponentDecorator } from '@decorators';
+import { Component, ComponentDecorator } from '@decorators';
+
 import './loader.scss';
-import { addMeta } from '@decorators/utils';
 
 @ComponentDecorator
-export class Loader extends HTMLElement {
-
-    constructor() {
-        super();
-        addMeta(this, 'component');
-    }
+export class Loader extends Component {
 
     protected init(): void {
         const img = document.createElement('img');

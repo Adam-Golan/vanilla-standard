@@ -19,7 +19,7 @@ export class State<IState = Record<string, unknown>> {
     get(name: keyof IState): any | undefined {
         return this.data.get(name);
     }
-    
+
     /**
      * Returns true if the given name exists in the state data, false otherwise.
      * @param name the name to check for
