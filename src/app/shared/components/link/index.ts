@@ -1,5 +1,5 @@
 import { Component, ComponentDecorator } from "@decorators";
-import { ILink } from "../intefaces";
+import { ILink } from "./types";
 
 @ComponentDecorator
 export class Link extends Component<ILink> {
@@ -17,5 +17,9 @@ export class Link extends Component<ILink> {
             img.src = this.texts.img;
             this.append(img);
         }
+    }
+
+    activateMe(href: string) {
+        href === this.texts.href ? this.classList.add('active') : this.classList.remove('active');
     }
 }

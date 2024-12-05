@@ -5,7 +5,7 @@ export * from './code';
 export * from './collapsible';
 export * from './dialogs';
 export * from './fluid';
-export * from './link-based';
+export * from './link';
 export * from './loader';
 export * from './progress';
 export * from './rating';
