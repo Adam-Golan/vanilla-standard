@@ -10,7 +10,7 @@ At its core, Vanilla strives for efficiency and reusability, enabling developers
 
 Whether you’re starting small or scaling big, Vanilla is your trusted frame to work with.
 
-**Vanilla, why code more then once?**
+**Vanilla, code once.**
 
 ## Run Locally
 
@@ -21,35 +21,29 @@ Clone the project
 ```
 
 Go to the project directory
-
 ```bash
   cd site
 ```
 
 Initiate project
-
 ```bash
   npm run initiate
 ```
 
 Initiate git
-
 ```bash
   npm run git_init
 ```
 
 Start developing
-
 ```bash
   npm run dev
 ```
 
-### Standard
-Vanilla Standard offers a more feature-rich starting point without adding unnecessary weight.
-- **Excludes**: Unit testing functionality.
-- **Pages**: Comes with **Home**, **Contact Us**, and **About** pages pre-configured.
-
-A solid choice for mid-sized projects or those needing more out-of-the-box functionality.
+Use [playground](./src/playground.ts) if you want to experiment
+```bash
+  npm run playground
+```
 
 ## !!!ATTENTION!!!
 
@@ -61,11 +55,13 @@ Sitemap script requires the following libraries to be global on your machine:
 
 ## Roadmap
 
-- Base classes done (excluding Page).
-- Services - Device, metaTags, OG, sitemap, State, Navigation -> Done.
-- Next: Footer, Dialogs, LinkBased.
+- Services - Navigation -> Fix back & forth, and rewrite JSDoc.
+- Next: Dialogs.
+- Create submodules -> Utils, core(decorators), services (extras), shared.
 
 ## Done!
 
-- Shared Modules: Card, Form, Hero, Table.
+- Base classes done.
+- Services - Device, metaTags, OG, sitemap, State.
+- Shared Modules: Card, Form, Hero, Table, Footer.
 - Shared Components: Adder, Avatar, Badge, Collapsible, Fluid, Loader, Progress, Rating, Soon, Tester, Toast, Tooltip, Top.

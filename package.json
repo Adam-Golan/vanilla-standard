@@ -13,6 +13,7 @@
     "git_init": "git init && git add -A && git commit -m \"Init.\"",
     "run-style": "npm run -w csser watch:scss",
     "run-logic": "vite",
+    "playground": "vite --open playground.html",
     "dev": "concurrently \"npm run run-style\" \"npm run run-logic\"",
     "visualize": "npx vite-bundle-visualizer",
     "build": "npm run build-style && vite build --emptyOutDir",
