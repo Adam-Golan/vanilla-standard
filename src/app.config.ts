@@ -1,4 +1,4 @@
-import { GetStarted, Home, ContactUs, Documentation, AboutUs } from "@app/pages"
+import { GetStarted, Home, ContactUs, AboutUs } from "@app/pages"
 import { IFooterConfig } from "@app/shared/modules/footer/types";
 import type { IMetaTags, OGCard} from "@services"
 import type { IPage, IPages } from "@services/navigation/types";
@@ -8,7 +8,6 @@ export const appConfig: AppConfig = {
     routes: new Map<string, IPage>([
         ['/home', Home],
         ['/get-started', GetStarted],
-        ['/docs', Documentation],
         ['/about-us', AboutUs],
         ['/contact-us', ContactUs],
     ]),
