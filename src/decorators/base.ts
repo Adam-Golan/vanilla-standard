@@ -60,16 +60,19 @@ export abstract class Basis<IConfig> extends HTMLElement {
         return this.getElementsByTagName<K>(tag);
     }
 
+
     /**
-     * Creates a container element for the component.
-     * The container element is a div with the class "container" and the
-     * given class name.
-     * @param cls The class name to add to the container element.
-     * @returns The created container element.
+     * Create a container element with specified classes, tag, and attributes.
+     * 
+     * @param cls - A string or array of strings representing the class names to add to the element.
+     * @param tag - The tag name of the element to create (default is 'div').
+     * @param attrs - An object representing custom attributes to set on the element.
+     * @returns The created HTML element with the specified configuration.
      */
-    protected createContainer(cls: string): HTMLDivElement {
-        const container = this.cElem('div');
-        container.classList.add('container', cls);
+    protected createContainer(cls: string | string[], tag: keyof HTMLElementTagNameMap = 'div', attrs: Record<string, string> = {}): HTMLElement {
+        const container = this.cElem(tag);
+        container.classList.add('container', ...Array.isArray(cls) ? cls : [cls]);
+        for (const [key, value] of Object.entries(attrs)) container.setAttribute(key, value);
         return container;
     }
 }
