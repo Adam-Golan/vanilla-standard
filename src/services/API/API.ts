@@ -1,4 +1,14 @@
 export class API {
+    declare OPTIONS: <T = any>(action: string, requestHeaders?: HeadersInit) => Promise<T>;
+    declare CONNECT: <T = any>(action: string, requestHeaders?: HeadersInit) => Promise<T>;
+
+    declare GET: <T = any>(action: string, payload?: string, requestHeaders?: HeadersInit, params?: { [key: string]: string }) => Promise<T>;
+    declare POST: <T = any>(action: string, payload: string, requestHeaders?: HeadersInit, params?: { [key: string]: string }) => Promise<T>;
+    declare PUT: <T = any>(action: string, payload: string, requestHeaders?: HeadersInit, params?: { [key: string]: string }) => Promise<T>;
+    declare PATCH: <T = any>(action: string, payload: string, requestHeaders?: HeadersInit, params?: { [key: string]: string }) => Promise<T>;
+    declare DELETE: <T = any>(action: string, payload: string, requestHeaders?: HeadersInit, params?: { [key: string]: string }) => Promise<T>;
+    declare HEAD: <T = any>(action: string, payload: string, requestHeaders?: HeadersInit, params?: { [key: string]: string }) => Promise<T>;
+
     methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS', 'CONNECT'];
     private cache: Map<string, any> = new Map();
 
@@ -12,11 +22,11 @@ export class API {
     constructor(private service: string = location.origin, private headers: HeadersInit = {}, private cacheDuration: number = 1000 * 60 * 5) {
         for (const method of this.methods) {
             if (['OPTIONS', 'CONNECT'].includes(method)) {
-                (API as any)[method] = <T = any>(action: string, requestHeaders?: HeadersInit) => {
+                (this as any)[method] = <T = any>(action: string, requestHeaders?: HeadersInit) => {
                     return this.baseRequest<T>(action, this.createInit(method, '', requestHeaders));
                 };
             } else {
-                (API as any)[method] = <T = any>(action: string, payload: string, requestHeaders?: HeadersInit, params?: { [key: string]: string }) => {
+                (this as any)[method] = <T = any>(action: string, payload: string, requestHeaders?: HeadersInit, params?: { [key: string]: string }) => {
                     if (params) action = this.getUrl(action, params);
                     return this.baseRequest<T>(action, this.createInit(method, payload, requestHeaders));
                 };
