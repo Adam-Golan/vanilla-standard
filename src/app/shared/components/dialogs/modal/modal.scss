@@ -2,7 +2,7 @@ dialog.modal {
   --pad: 20px;
   --borderRadius: 1rem;
   width: var(--modalClamp);
-  margin-top: 10%;
+  margin-block-start: 10%;
   margin-inline: auto;
   padding: var(--pad);
   border-radius: var(--borderRadius);

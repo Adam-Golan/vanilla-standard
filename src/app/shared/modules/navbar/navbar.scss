@@ -19,7 +19,7 @@ navbar-module.navbar {
   transition: all 0.5s ease;
   &.show {
     .links {
-      margin-left: 0;
+      margin-inline-start: 0;
       max-height: 800%;
       overflow: auto;
     }
@@ -27,7 +27,7 @@ navbar-module.navbar {
   .links {
     width: 100%;
     display: var(--linksDisplay);
-    margin-left: var(--linksLeft);
+    margin-inline-start: var(--linksLeft);
     flex-wrap: wrap;
     background: var(--bg);
     transition: all 0.5s ease;

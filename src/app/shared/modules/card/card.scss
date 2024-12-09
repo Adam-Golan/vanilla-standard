@@ -40,7 +40,7 @@ card-module.card {
   > * {
     --pad: 0.5rem;
     padding: var(--pad) calc(var(--pad) * 4);
-    // margin-bottom: var(--pad);
+    // margin-block-end: var(--pad);
   }
 
   .title {

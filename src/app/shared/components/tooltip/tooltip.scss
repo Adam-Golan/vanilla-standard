@@ -75,8 +75,8 @@ tooltipel-component {
     left: 50%;
     transform: translateX(-50%);
     opacity: inherit;
-    border-left: var(--caret-border) solid transparent;
-    border-right: var(--caret-border) solid transparent;
-    border-top: var(--caret-border) solid var(--bg);
+    border-inline-start: var(--caret-border) solid transparent;
+    border-inline-end: var(--caret-border) solid transparent;
+    border-block-start: var(--caret-border) solid var(--bg);
   }
 }

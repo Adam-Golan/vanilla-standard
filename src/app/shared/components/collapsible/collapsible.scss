@@ -2,13 +2,13 @@ collapsible-component.collapsible {
   --max-width: 500px;
   padding-inline: 10px;
   &.info {
-    border-left: 2px solid var(--info);
+    border-inline-start: 2px solid var(--info);
   }
   &.warn {
-    border-left: 2px solid var(--warning);
+    border-inline-start: 2px solid var(--warning);
   }
   &.danger {
-    border-left: 2px solid var(--danger);
+    border-inline-start: 2px solid var(--danger);
   }
   details {
     max-width: var(--max-width);
