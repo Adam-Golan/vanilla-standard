@@ -1,0 +1,19 @@
+checkbox-component.checkbox {
+  .form {
+    &-group {
+      grid-template-areas: "field label" "output output";
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0 2ch;
+    }
+    &-field {
+      width: 2ch;
+    }
+    &-label {
+      cursor: pointer;
+      &::after {
+        content: none;
+      }
+    }
+  }
+}

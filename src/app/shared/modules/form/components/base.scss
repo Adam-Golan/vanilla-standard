@@ -1,0 +1,42 @@
+.form {
+  &-group {
+    margin-block: 1rem;
+    display: grid;
+    grid-template-areas: "label" "field" "output";
+    overflow: visible;
+    &[data-required="true"] {
+      > .form-label::before {
+        content: "*";
+        position: absolute;
+        left: -1ch;
+      }
+    }
+    &::after {
+      content: attr(data-unit);
+    }
+  }
+  &-label {
+    grid-area: label;
+    text-transform: capitalize;
+    &::after {
+      content: ": ";
+    }
+  }
+  &-field {
+    margin: 0;
+    grid-area: field;
+    resize: none;
+    z-index: 20;
+  }
+  &-output {
+    grid-area: output;
+    text-align: center;
+    color: var(--danger-l-2);
+    max-height: 0;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden;
+    &.show {
+      max-height: 3ch;
+    }
+  }
+}

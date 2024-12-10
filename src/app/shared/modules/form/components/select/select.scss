@@ -1,0 +1,12 @@
+select-component.select {
+  .form-field.select {
+    cursor: pointer;
+    option {
+      background: var(--bg);
+      &:disabled {
+        background: var(--trans-bg-low);
+        color: var(--trans-color-low);
+      }
+    }
+  }
+}

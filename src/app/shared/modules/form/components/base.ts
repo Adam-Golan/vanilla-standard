@@ -1,6 +1,8 @@
 import { Component } from "@decorators";
 import { Props, InputType } from "../interfaces";
 
+import './base.scss';
+
 export abstract class FormComponent<P extends Props = Props> extends Component<P> {
     value: string = '';
     field: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
@@ -12,7 +14,6 @@ export abstract class FormComponent<P extends Props = Props> extends Component<P
     }
 
     protected init(): void {
-        this.className = 'form-group';
         this.hasError = !!(this.props.required && this.props.error?.length);
         this.prepend(this.createMe());
     }
@@ -27,9 +28,9 @@ export abstract class FormComponent<P extends Props = Props> extends Component<P
         const [fieldset, label] = this.createBasicElements(inpType);
         // Classes implement.
         fieldset.className = label.className = this.field.className = 'form-';
-        fieldset.className += 'input';
+        fieldset.className += 'group';
         label.className += 'label';
-        this.field.className += 'field';
+        this.field.className += `field ${inpType} ${this.constructor.name.toLowerCase()}`;
         const children: HTMLElement[] = [this.field];
         // Setting field.
         this.setField();
@@ -58,6 +59,10 @@ export abstract class FormComponent<P extends Props = Props> extends Component<P
         this.field.id = this.field.name = this.props.name;
         if (this.props.placeholder?.length && !(this.field instanceof HTMLSelectElement)) this.field.placeholder = this.props.placeholder;
         this.field.oninput = () => this.onInput(this.field.value.toLowerCase());
+        if (this.props.required) {
+            this.field.onfocus = () => this.field.classList.remove('touched');
+            this.field.onblur = () => this.field.classList.add('touched');
+        }
         this.field.autocomplete = this.props.autocomplete ?? 'off';
         this.field.ariaRequired = `${!!this.props.required}`;
     }
@@ -115,7 +120,7 @@ export abstract class FormComponent<P extends Props = Props> extends Component<P
 
     checkError(): void {
         if (this.props.error?.length) {
-            this.hasError = !!(this.props.required && this.props.error?.length && !this.value.length);
+            this.hasError = !!(this.props.required && this.props.error?.length && (!this.value.length || this.value === 'off'));
             this.clsElem('form-output').item(0)?.classList[this.hasError ? 'add' : 'remove']('show');
         }
     }

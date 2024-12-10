@@ -1,0 +1,14 @@
+radio-component.radio {
+  .form-group {
+    div {
+      display: flex;
+      gap: 1ch;
+      input {
+        margin: 0;
+      }
+      label {
+        cursor: pointer;
+      }
+    }
+  }
+}

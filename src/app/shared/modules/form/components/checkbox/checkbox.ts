@@ -2,6 +2,8 @@ import { ComponentDecorator } from "@decorators";
 import { FormComponent } from "../base";
 import { ICheckboxProps } from "../../interfaces";
 
+import './checkbox.scss';
+
 @ComponentDecorator
 export class Checkbox extends FormComponent<ICheckboxProps> {
     declare field: HTMLInputElement;

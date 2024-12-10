@@ -1,6 +1,7 @@
 form-module {
   padding: 20px;
   legend {
+    margin-block-end: 1rem;
     font-size: 1.4rem;
     text-align: center;
     font-weight: bolder;
@@ -8,45 +9,6 @@ form-module {
     text-transform: capitalize;
   }
   .form {
-    &-group {
-      display: inline-flex;
-      flex-direction: column;
-      overflow: visible;
-    }
-    &-input {
-      display: inline-flex;
-      flex-wrap: wrap;
-      gap: 10px 2px;
-      margin-block: 1rem;
-      overflow: visible;
-      &::after {
-        content: attr(data-unit);
-      }
-      &[data-required="true"]::before {
-        content: "*";
-      }
-    }
-    &-label {
-      flex-basis: max-content;
-      text-transform: capitalize;
-      &::after {
-        content: ":";
-      }
-    }
-    &-field {
-      --borderColor: var(--color);
-      width: 100%;
-      resize: none;
-    }
-    &-output {
-      flex-basis: 100%;
-      color: var(--danger-l-2);
-      max-height: 0;
-      transition: all 0.5s ease-in-out;
-      &.show {
-        max-height: 3ch;
-      }
-    }
     &-btns {
       padding-block: 1rem;
       display: flex;
@@ -79,13 +41,5 @@ form-module {
         background: var(--success-l-1);
       }
     }
-  }
-  textarea {
-    height: 10ch;
-    flex-basis: 20ch;
-    overflow-y: auto;
-  }
-  autocomplete-component {
-    z-index: 9999;
   }
 }

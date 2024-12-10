@@ -2,6 +2,8 @@ import { ComponentDecorator } from "@decorators";
 import { FormMouseComponent } from "../base";
 import { ISelectProps } from "../../interfaces/props";
 
+import './select.scss';
+
 @ComponentDecorator
 export class Select extends FormMouseComponent<ISelectProps> {
     declare field: HTMLSelectElement;

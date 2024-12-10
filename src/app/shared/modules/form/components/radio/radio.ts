@@ -2,12 +2,15 @@ import { ComponentDecorator } from "@decorators";
 import { FormComponent } from "../base";
 import { IRadioProps } from "../../interfaces";
 
+import './radio.scss';
+
 @ComponentDecorator
 export class Radio extends FormComponent<IRadioProps> {
     declare field: HTMLInputElement;
     protected createMe(): HTMLFieldSetElement {
         this.field = this.cElem('input');
         const fieldset = this.cElem('fieldset'), legend = this.cElem('legend'), children: HTMLElement[] = [legend];
+        fieldset.className = 'form-group';
         legend.innerHTML = this.props.label;
         for (const radio of this.props.values) {
             const div = this.cElem('div'), inp = this.cElem('input'), label = this.cElem('label');

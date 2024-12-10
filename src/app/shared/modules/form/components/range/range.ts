@@ -2,6 +2,8 @@ import { ComponentDecorator } from "@decorators";
 import { FormComponent } from "../base";
 import { IRangeProps } from "../../interfaces";
 
+import './range.scss';
+
 @ComponentDecorator
 export class Range extends FormComponent<IRangeProps> {
     declare field: HTMLInputElement;

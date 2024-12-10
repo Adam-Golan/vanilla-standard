@@ -4,6 +4,8 @@ import { FilterDropdown } from "@app/shared";
 import { IAutocompleteProps } from "../../interfaces";
 import { IOptionProps } from "../../interfaces/props/shared";
 
+import './autocomplete.scss';
+
 @ComponentDecorator
 export class Autocomplete extends FormKeyboardComponent<IAutocompleteProps> {
     declare field: HTMLInputElement;
