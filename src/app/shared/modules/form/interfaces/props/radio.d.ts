@@ -1,6 +1,6 @@
 import { Props } from "./base";
 
-export interface IRadioProps extends Omit<Props, 'autocomplete' | 'placeholder'>, Partial<Pick<HTMLInputElement, 'value'>> {
+export interface IRadioProps extends Omit<Props, 'placeholder' | 'autocomplete' | 'required' | 'error'>, Partial<Pick<HTMLInputElement, 'value'>> {
     label: string;
     values: string[];
 }
