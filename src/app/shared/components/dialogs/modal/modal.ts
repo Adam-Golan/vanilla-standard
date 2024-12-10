@@ -1,10 +1,10 @@
 import './modal.scss';
 
-export class Modal extends HTMLDivElement {
+export class Modal {
     private dialog: HTMLDialogElement
 
-    constructor(private appendFn: ParentNode['append'], private content: Node | string) {
-        super();
+    constructor(private appendFn: ParentNode['append'], private content: Node | string, private deleteFn?: () => void) {
+        this.init();
     }
 
     protected init(): void {
@@ -25,5 +25,6 @@ export class Modal extends HTMLDivElement {
 
     closeModal() {
         this.dialog.remove();
+        setTimeout(() => this.deleteFn?.(), 500);
     }
 }
