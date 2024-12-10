@@ -1,6 +1,8 @@
 import { Component, ComponentDecorator } from "@decorators";
 import { ILink } from "./types";
 
+import './link.scss';
+
 @ComponentDecorator
 export class Link extends Component<ILink> {
     constructor(protected texts: ILink, private navigate: (path: string) => void) {
@@ -8,6 +10,7 @@ export class Link extends Component<ILink> {
     }
     protected init(): void {
         this.innerHTML = this.texts.text.replace(/\-/g, ' ');
+        this.tabIndex = 0;
         this.dataset.href = this.texts.href;
         this.onclick = () => { this.navigate(this.texts.href); this.classList.add('active'); }
         if (this.texts.title) this.title = this.texts.title;
@@ -20,6 +23,6 @@ export class Link extends Component<ILink> {
     }
 
     activateMe(href: string) {
-        href === this.texts.href ? this.classList.add('active') : this.classList.remove('active');
+        this.classList[href === this.texts.href ? 'add' : 'remove']('active');
     }
 }

@@ -1,0 +1,17 @@
+link-component.link {
+  --pad: 10px;
+  padding: var(--pad) calc(var(--pad) * 3);
+  background: var(--color);
+  box-shadow: 0 0 calc(var(--pad) * 2) calc(var(--pad) / 2) var(--trans-color-low);
+  color: var(--bg);
+  text-transform: capitalize;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+
+  &:hover {
+    box-shadow: 0 0 calc(var(--pad) * 2) calc(var(--pad) / 4)
+      var(--trans-color-medium);
+    scale: 1.05;
+  }
+}
