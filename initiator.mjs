@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Remove git directories & files.
-['.git', '.gitmodules', 'src/style/.git'].forEach(path => {
+['.git', '.gitmodules', 'src/style/.git', 'src/utils/.git'].forEach(path => {
     try {
         rmSync(join(__dirname, path), { recursive: true, force: true });
     } catch (err) {
