@@ -1,7 +1,6 @@
 import { Module, ModuleDecorator } from "@decorators";
 import { IFormMap, IFormBtns } from "./interfaces/maps";
 import { Autocomplete, Input, Select, Textarea, Checkbox, Radio, Range, Switch } from "./components";
-import { API } from "@services/API/API";
 import { FormComponent } from "./components/base";
 import { FormFieldType } from "./interfaces";
 
@@ -10,7 +9,6 @@ import './forms.scss';
 @ModuleDecorator
 export class Form extends Module {
     query: { [name: string]: string } = {};
-    proxy = new API();
     fields: FormComponent[] = [];
     appBtns: HTMLButtonElement[] = [];
     submitable: boolean = false;
@@ -78,7 +76,6 @@ export class Form extends Module {
                 // Color picker
                 // Date and time (combined)
                 // Multi-select dropdown
-                // Switch/toggle
                 // Listbox (multi-select list)
                 // File upload
                 // Date and time picker (calendar-based)
@@ -86,7 +83,6 @@ export class Form extends Module {
                 // Rating (stars or other symbols)
                 // Tag input (adding/removing multiple items)
                 // Currency input (often with symbol display)
-                // Slider (custom range with handles)
                 // Stepper (increment/decrement control)
                 // File drag and drop zone
                 // Masked input (for formatted data, e.g., phone numbers)
@@ -167,13 +163,13 @@ export class Form extends Module {
         const newFields = [];
         for (let ctx = 1; ctx <= +ref?.value; ctx++) {
             const props = structuredClone(toClone.props);
-            props.name += ` ${ctx}`;
+            props.name += `${ctx}`;
             const field = new Input(props);
             field.formCb = () => {
-                this.query[`${props.name}${ctx}`] = `${field.value} ${props.dataset?.unit ?? ''}`.trim();
+                this.query[props.name] = `${field.value} ${props.dataset?.unit ?? ''}`.trim();
                 this.checkForm();
             }
-            field.onchange = () => { this.query[`${props.name}${ctx}`] = field.value?.length ? `${field.value} ${props.dataset?.unit ?? ''}` : ''; this.checkForm(); };
+            field.onchange = () => { this.query[props.name] = field.value?.length ? `${field.value} ${props.dataset?.unit ?? ''}` : ''; this.checkForm(); };
             newFields.push(field);
         }
         this.fields.splice(idx, amount, ...newFields);
@@ -185,10 +181,5 @@ export class Form extends Module {
     checkForm(): void {
         this.submitable = !this.fields.some(field => field.hasError);
         for (const btn of this.appBtns) btn.disabled = !this.submitable;
-    }
-
-    // Request service.
-    request<Response = any>(action: string, method: keyof API = 'POST'): Promise<Response> {
-        return this.proxy[method](action, JSON.stringify(this.query));
     }
 }
