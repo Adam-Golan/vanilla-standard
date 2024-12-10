@@ -6,7 +6,6 @@ const StateKeys = {
     footerUpdate: 'footerUpdate',
     // // Dialogs.
     openModal: 'openModal',
-    closeModal: 'closeModal',
     openDialog: 'openDialog',
     closeDialog: 'closeDialog',
 } as const;

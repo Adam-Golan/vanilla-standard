@@ -50,8 +50,7 @@ class Main {
   private subscribes(): void {
     const modals: { [key: string]: Modal } = {};
     // Modals.
-    this.appState.subscribe(StateKeys.openModal, (key: string, content) => modals[key] = new Modal(this.app.append, content));
-    this.appState.subscribe(StateKeys.closeModal, (key: string) => { modals[key].closeModal(); delete modals[key]; });
+    this.appState.subscribe(StateKeys.openModal, (key: string, content: Node | string) => modals[key] = new Modal(this.app.append, content, () => delete modals[key]));
   }
 }
 
