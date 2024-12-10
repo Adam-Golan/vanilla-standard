@@ -7,13 +7,13 @@ import './adder.scss';
 
 @ComponentDecorator
 export class Adder extends HTMLElement {
-    constructor(protected appState: State, private comp: HTMLElement) {
+    constructor(protected appState: State, private modalKey: string, private comp: HTMLElement) {
         super();
         this.init();
         addMeta(this, 'component');
     }
     protected init(): void {
         this.id = 'adder';
-        this.onclick = () => this.appState.publish(StateKeys.openModal, this.comp);
+        this.onclick = () => this.appState.publish(StateKeys.openModal, this.modalKey, this.comp);
     }
 }
