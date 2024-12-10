@@ -15,7 +15,6 @@ Whether you’re starting small or scaling big, Vanilla is your trusted frame to
 ## Run Locally
 
 Clone the project
-
 ```bash
   git clone https://github.com/Adam-Golan/vanilla-site.git
 ```
@@ -30,7 +29,7 @@ Initiate project
   npm run initiate
 ```
 
-Initiate git
+Initiate git (optional)
 ```bash
   npm run git_init
 ```
