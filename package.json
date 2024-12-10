@@ -9,16 +9,17 @@
   "scripts": {
     "update-project": "git submodule update --recursive --remote",
     "initiate": "git submodule update --init --recursive && npm install --recursive",
+    "git_init": "git init && git add -A && git commit -m \"Initiation.\"",
+
     "postinstall": "node initiator.mjs",
-    "git_init": "git init && git add -A && git commit -m \"Init.\"",
-    "run-style": "npm run -w csser watch:scss",
-    "run-logic": "vite",
+
     "playground": "vite --open playground.html",
-    "dev": "concurrently \"npm run run-style\" \"npm run run-logic\"",
+    "dev": "concurrently \"npm run -w csser watch:scss\" \"vite\"",
+
+    "build": "npm run -w csser build:scss && vite build --emptyOutDir",
+    "build-watch": "npm run -w csser build:scss && vite build --watch",
+
     "visualize": "npx vite-bundle-visualizer",
-    "build": "npm run build-style && vite build --emptyOutDir",
-    "build-style": "npm run -w csser build:scss",
-    "build-watch": "npm run build-style && vite build --watch",
     "generate:sitemap": "node --experimental-strip-types --import=module ./src/services/sitemap/sitemap.ts ../../../dist/"
   },
   "author": "",
