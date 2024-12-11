@@ -37,6 +37,10 @@ navbar-module.navbar {
       width: var(--linkWidth);
       display: var(--linkDisplay);
       gap: calc(var(--pad) / 2);
+      border-radius: 0;
+      box-shadow: none;
+      background: var(--bg);
+      color: var(--color);
       font-size: 1.2rem;
       text-align: center;
       text-transform: capitalize;
@@ -44,6 +48,7 @@ navbar-module.navbar {
       transition: all 0.3s ease allow-discrete;
       &:hover,
       &.active {
+        scale: none;
         background: var(--color);
         color: var(--bg);
       }

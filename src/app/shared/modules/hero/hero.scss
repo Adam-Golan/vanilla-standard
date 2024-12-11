@@ -35,6 +35,7 @@ hero-module.hero {
     display: inline-block;
     padding: calc(var(--heroPadding) * 0.4) calc(var(--heroPadding) * 0.75);
     background: var(--bg);
+    color: var(--color);
     border-radius: calc(var(--heroPadding) / 8);
     text-transform: uppercase;
     font-weight: bold;
