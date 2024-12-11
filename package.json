@@ -13,7 +13,7 @@
 
     "postinstall": "node initiator.mjs",
 
-    "playground": "vite --open playground.html",
+    "playground": "concurrently \"npm run -w csser watch:scss\" \"vite --open playground.html\"",
     "dev": "concurrently \"npm run -w csser watch:scss\" \"vite\"",
 
     "build": "npm run -w csser build:scss && vite build --emptyOutDir",
