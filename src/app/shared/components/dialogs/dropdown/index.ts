@@ -1,3 +1,3 @@
-export * from './filter/filterDropdown';
-export * from './menu/menuDropdown';
-export * from './select/selectDropdown';
+export * from './filter';
+export * from './menu';
+export * from './select';

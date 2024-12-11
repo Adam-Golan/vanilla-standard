@@ -1,6 +1,6 @@
 import { ComponentDecorator } from "@decorators";
 import { IOptionProps } from "@app/shared/modules/form/interfaces/props/shared";
-import { SelectDropdown } from "../select/selectDropdown";
+import { SelectDropdown } from "../select";
 
 @ComponentDecorator
 export class FilterDropdown extends SelectDropdown {
@@ -8,7 +8,7 @@ export class FilterDropdown extends SelectDropdown {
 
     filter(val: string): void {
         this.filteredList = this.list.filter(item => item.text.includes(val));
-        this[this.filteredList.length ? 'open' : 'close']();
         this.renderList(this.filteredList);
+        this[this.filteredList.length ? 'open' : 'close']();
     }
 }

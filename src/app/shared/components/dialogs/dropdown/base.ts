@@ -3,7 +3,7 @@ import { Component } from "@decorators";
 import './dropdown.scss';
 
 export abstract class BaseDropdown<T> extends Component<T[]> {
-    dialog = this.cElem('dialog');
+    protected dialog = this.cElem('dialog');
 
     constructor(protected list: T[] = [], protected cb: (selected: T) => void) {
         super(list);
@@ -25,7 +25,6 @@ export abstract class BaseDropdown<T> extends Component<T[]> {
             this.dialog.append(item);
         }
     }
-
 
     toggle(): void {
         this.dialog.open = !this.dialog.open;
