@@ -1,8 +1,8 @@
-.extender {
-  --size: 50px;
+extender-component.extender {
   overflow: visible;
   cursor: pointer;
   &.dots {
+    --size: 50px;
     width: var(--size);
     height: var(--size);
     background-image: radial-gradient(var(--color) 50%, transparent 50%),
@@ -10,17 +10,41 @@
       radial-gradient(var(--color) 50%, transparent 50%);
     background-size: 10px 10px, 10px 10px, 10px 10px;
     background-position: 25% 50%, 50% 50%, 75% 50%;
+    &.hor {
+      background-position: 50% 25%, 50% 50%, 50% 75%;
+    }
     background-repeat: no-repeat;
   }
   &.caret {
-    width: var(--size);
-    height: var(--size);
+    --size: 25px;
+    width: 0;
+    height: 0;
+    display: inline-block;
+    border-style: solid;
+    &.up {
+      border-width: 0 var(--size) var(--size) var(--size);
+      border-color: transparent transparent var(--color) transparent;
+    }
+    &.down {
+      border-width: var(--size) var(--size) 0 var(--size);
+      border-color: var(--color) transparent transparent transparent;
+    }
+    &.left {
+      border-width: var(--size) var(--size) var(--size) 0;
+      border-color: transparent var(--color) transparent transparent;
+    }
+    &.right {
+      border-width: var(--size) 0 var(--size) var(--size);
+      border-color: transparent transparent transparent var(--color);
+    }
   }
   .dropdown {
     top: 100%;
-    width: max-content;
-    * {
-      font-size: 1.2rem;
+    width: fit-content;
+    border-radius: 0;
+    box-shadow: 0px 4px 6px 0px var(--trans-color-low);
+    link-component.link {
+      width: 100%;
     }
   }
 }
