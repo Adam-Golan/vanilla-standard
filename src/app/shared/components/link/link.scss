@@ -1,8 +1,8 @@
 link-component.link {
   --pad: 10px;
   padding: var(--pad) calc(var(--pad) * 3);
-  background: var(--color);
   box-shadow: 0 0 calc(var(--pad) * 2) calc(var(--pad) / 2) var(--trans-color-low);
+  background: var(--color);
   color: var(--bg);
   text-transform: capitalize;
   border-radius: 10px;
