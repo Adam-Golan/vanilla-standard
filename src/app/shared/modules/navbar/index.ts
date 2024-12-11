@@ -4,7 +4,7 @@ import { INavigationTree } from "@services/navigation/types";
 import { StateKeys } from "@constants/stateKeys.constant";
 import { Link } from "@app/shared";
 import { ILink } from "@app/shared/components/link/types";
-import { MenuExtender } from "@app/shared";
+import { Extender } from "@app/shared";
 import { ILinks, MenuItem } from "./types";
 
 import './navbar.scss';
@@ -36,7 +36,7 @@ export class Navbar extends Module<INavigationTree['children']> {
             if (page.children.length) {
                 const subLink: MenuItem[] = [];
                 this.createLinks(subLink, page.children);
-                arrRef.push(new MenuExtender<MenuItem>(subLink, text));
+                arrRef.push(new Extender<MenuItem>(subLink, text));
             } else arrRef.push(new Link({ href: page.path, text }, this.navigate.bind(this)));
         }
     }
@@ -82,7 +82,7 @@ export class Navbar extends Module<INavigationTree['children']> {
             const idx = Math.floor(window.screen.width / (linksWidth / linksCollect.length)) - 1;
             const toRemove = Array.from(links.children).splice(idx) as Link[];
             for (const link of toRemove) links.removeChild(link);
-            this.clsElem('links')[0].append(new MenuExtender<Link>(toRemove, 'dots'));
+            this.clsElem('links')[0].append(new Extender<Link>(toRemove, 'dots'));
         }
     }
 
