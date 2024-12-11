@@ -60,8 +60,8 @@ export abstract class FormComponent<P extends Props = Props> extends Component<P
         if (this.props.placeholder?.length && !(this.field instanceof HTMLSelectElement)) this.field.placeholder = this.props.placeholder;
         this.field.oninput = () => this.onInput(this.field.value.toLowerCase());
         if (this.props.required) {
-            this.field.onfocus = () => this.field.classList.remove('touched');
-            this.field.onblur = () => this.field.classList.add('touched');
+            this.field.addEventListener('focus', () => this.field.classList.remove('touched'));
+            this.field.addEventListener('blur', () => this.field.classList.add('touched'));
         }
         this.field.autocomplete = this.props.autocomplete ?? 'off';
         this.field.ariaRequired = `${!!this.props.required}`;
